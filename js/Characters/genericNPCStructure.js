@@ -1,3 +1,6 @@
+/*
+Todo: Make dialogue box system. Place text box at bottom of the screen. Make it where when colliding with npc you can press space to talk. 
+*/
 var genericNPCStructure = function(xPos,yPos,npcString){
 Phaser.Sprite.call(this,game,xPos,yPos,npcString,null);
 console.log("Make a genericNPCStructure. I have no clue why you are doing this.");
@@ -34,7 +37,7 @@ genericNPCStructure.prototype.sentences=[
 ];
 
 genericNPCStructure.prototype.dialogueCount=1;
-genericNPCStructure.prototype.dialogueIndex=0;
+genericNPCStructure.prototype.dialogueIndex=1;
 
 genericNPCStructure.prototype.talk=function(){
 if(dialogueTimmer!=-1) return;
@@ -46,11 +49,13 @@ else{
 }
 
 //do more logic checking here to get the correct list of npc dialogue
-
+dialogueBox = game.add.sprite(0, 450, 'DialogueBox');
 dialogueTimmer=5;
-dialogue= game.add.text(256,16,this.sentences[1][this.dialogueCount],{fill: "#ffffff"});
+dialogue= game.add.text(20,475,this.sentences[this.dialogueIndex][this.dialogueCount],{fill: "#000000"});
 dialogue.text=this.sentences[this.dialogueIndex][this.dialogueCount];
 this.dialogueCount++;
+
+
 }
 
 
