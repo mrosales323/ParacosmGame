@@ -27,10 +27,12 @@ var text;
 
 var character;
 var npc1;
+var npc2;
 
 var dialogue;
 var dialogueTimmer=-1;
 var dialogueBox;
+var isDialogueUp;
 
 function preload(){
 	this.game.load.image('ship','assets/img/ship.png');
@@ -38,16 +40,27 @@ function preload(){
 	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("Player","assets/img/Player/player.png");
 	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
-
 }
 
 function createAllNPCS(){
-	npc1= new genericNPCStructure(game.world.centerX*1.3,game.world.centerY*1.3,"ship");
+	npc1= new NPC1(game.world.centerX*1.3,game.world.centerY*1.3,"ship");
 	this.game.physics.arcade.enable(npc1);
 	npc1.enableBody=true;
 	npc1.body.collideWorldBounds=true;
 	npc1.body.immovable=true;
+	npc1.body.enable=true;
 	game.add.existing(npc1);
+
+	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.8,"ship");
+	this.game.physics.arcade.enable(npc2);
+	npc2.enableBody=true;
+	npc2.body.collideWorldBounds=true;
+	npc2.body.immovable=true;
+	npc2.body.enable=true;
+
+	game.add.existing(npc2);
+
+
 }
 
 function createCharacter(){
@@ -63,9 +76,12 @@ function createCharacter(){
 function create(){
 	console.log("WTF");
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.world.setBounds(0,0,1920,1080); //make the world larger than the camera viewport
 	createAllNPCS();
 	createCharacter();
+	game.camera.follow(character);
 	game.time.events.loop(Phaser.Timer.SECOND, dialogueCountDown, this);
+	isDialogueUp=false;
 }
 
 function listener(){
@@ -74,7 +90,16 @@ function listener(){
 }
 
 function update(){
-	 game.physics.arcade.collide(character, npc1);
+	 //game.physics.arcade.collide(character, npc1);
+	
+	 //game.physics.arcade.collide(character, npc2);
+
+if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
+    {
+    	console.log("Space pressed");
+    	cleanDialogue();
+    }
+
 }
 
 function render(){
@@ -86,14 +111,20 @@ function dialogueCountDown(){
 	
 	if(dialogueTimmer==0){
 		//clear dialogue
-		dialogue.destroy();
-		dialogueTimmer=-1;
-		dialogueBox.kill();
-		console.log("Boom");
+		cleanDialogue();
 	}
 	else if(dialogueTimmer>0){
 		console.log(dialogueTimmer);
 		dialogueTimmer--;
+		//console.log(isDialogueUp);
 	}
+}
+
+function cleanDialogue(){
+		dialogue.destroy();
+		dialogueTimmer=-1;
+		dialogueBox.kill();
+		console.log("Boom BAM");
+		isDialogueUp=false;
 }
 

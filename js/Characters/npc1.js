@@ -1,25 +1,25 @@
 /*
 Todo: Make dialogue box system. Place text box at bottom of the screen. Make it where when colliding with npc you can press space to talk. 
 */
-var genericNPCStructure = function(xPos,yPos,npcString){
+var NPC1= function(xPos,yPos,npcString){
 Phaser.Sprite.call(this,game,xPos,yPos,npcString,null);
-console.log("Make a genericNPCStructure. I have no clue why you are doing this.");
+console.log("Make a npc");
 }
 
-genericNPCStructure.prototype= Object.create(Phaser.Sprite.prototype);
-genericNPCStructure.prototype.constructor=player;
+NPC1.prototype= Object.create(Phaser.Sprite.prototype);
+NPC1.prototype.constructor=player;
 
 
-genericNPCStructure.prototype.create=function(){
+NPC1.prototype.create=function(){
 
 }
 
-genericNPCStructure.prototype.update=function(){
+NPC1.prototype.update=function(){
 //console.log("MEH");
 }
 
 
-genericNPCStructure.prototype.sentences=[
+NPC1.prototype.sentences=[
 
     //first numeric value represents the number of strings in that dialogue list.
     //[0,x]
@@ -36,10 +36,10 @@ genericNPCStructure.prototype.sentences=[
 
 ];
 
-genericNPCStructure.prototype.dialogueCount=1;
-genericNPCStructure.prototype.dialogueIndex=1;
+NPC1.prototype.dialogueCount=1;
+NPC1.prototype.dialogueIndex=1;
 
-genericNPCStructure.prototype.talk=function(){
+NPC1.prototype.talk=function(){
 if(dialogueTimmer!=-1) return;
 if(this.dialogueCount>(this.sentences[this.dialogueIndex][0])){
     this.dialogueCount=1;
@@ -53,17 +53,9 @@ dialogueBox = game.add.sprite(game.camera.x, game.camera.y+450, 'DialogueBox');
 dialogueTimmer=5;
 dialogue= game.add.text(game.camera.x+20,game.camera.y+475,this.sentences[this.dialogueIndex][this.dialogueCount],{fill: "#abcdef"});
 dialogue.text=this.sentences[this.dialogueIndex][this.dialogueCount];
-console.log("dialogue is drawn");
+//console.log("dialogue is drawn");
 
 this.dialogueCount++;
 isDialogueUp=true;
 
-}
-
-
-
-function button1Click(){
-console.log("YAY");
-button1Level+=1;
-priceText.text="Button Level " + button1Level;
 }

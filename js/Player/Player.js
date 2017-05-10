@@ -34,6 +34,8 @@ npc.talk();
 
 player.prototype.update=function(){
 //console.log("MEH");
+	if(isDialogueUp==true) return;
+	//console.log("This is running");
 
  	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
     {
@@ -54,6 +56,7 @@ player.prototype.update=function(){
     }
 
    game.physics.arcade.collide(character, npc1);
+   game.physics.arcade.collide(character,npc2);
 }
 
 function button1Click(){
