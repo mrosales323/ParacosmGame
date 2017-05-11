@@ -34,12 +34,18 @@ var dialogueTimmer=-1;
 var dialogueBox;
 var isDialogueUp;
 
+var tileSprite;
+
+var worldWidth=1920;
+var worldHeight=1080;
+
 function preload(){
 	this.game.load.image('ship','assets/img/ship.png');
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("Player","assets/img/Player/player.png");
 	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
+	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
 }
 
 function createAllNPCS(){
@@ -74,14 +80,17 @@ function createCharacter(){
 }
 
 function create(){
-	console.log("WTF");
+	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
-	game.world.setBounds(0,0,1920,1080); //make the world larger than the camera viewport
+	game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
 	createAllNPCS();
 	createCharacter();
 	game.camera.follow(character);
 	game.time.events.loop(Phaser.Timer.SECOND, dialogueCountDown, this);
 	isDialogueUp=false;
+
+
+	console.log("All good to go!");
 }
 
 function listener(){
@@ -90,9 +99,7 @@ function listener(){
 }
 
 function update(){
-	 //game.physics.arcade.collide(character, npc1);
-	
-	 //game.physics.arcade.collide(character, npc2);
+	 //collision detection between player and entities is checked in Player.js
 
 if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
     {
