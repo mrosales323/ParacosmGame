@@ -41,8 +41,6 @@ console.log("Playing my awesome game :LSLIADIJADILJ");
 };
 
 main.prototype.preload=function(){
-
-
 }
 
 main.prototype.createAllNPCS=function(){
@@ -62,7 +60,6 @@ main.prototype.createAllNPCS=function(){
 	npc2.body.immovable=true;
 	npc2.body.enable=true;
 	npc2.dialogueIndex=dayNumber;
-
 	game.add.existing(npc2);
 
 
@@ -98,6 +95,10 @@ main.prototype.create=function(){
 
 	game.input.onDown.add(this.gofull, this);
 
+
+ game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
+game.input.onDown.add(this.gofull, this);
 
 }
 //this.game.stage.scale.refresh();

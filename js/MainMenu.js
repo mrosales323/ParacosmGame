@@ -8,8 +8,6 @@ var QuitButtonText;
 
 var OptionsButton;
 var OptionsButtonText;
-
-
 var cursor;
 
 
@@ -35,9 +33,12 @@ MainMenu.prototype.create=function(){
 
     QuitButton = game.add.sprite(game.world.centerX, game.world.centerY*1.5, 'BlankButton');
 
+
     var QuitButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: QuitButton.width, align: "center" };
     QuitButtonText = game.add.text(QuitButton.centerX*.95, QuitButton.centerY*.95, "Quit", QuitButtonStyle);
 
+    var QuitButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: PlayButton.width, align: "center" };
+    QuitButtonText = game.add.text(QuitButton.centerX*.95, QuitButton.centerY*.95, "Quit", QuitButtonStyle);
 
     OptionsButton = game.add.sprite(game.world.centerX, game.world.centerY*1.25, 'BlankButton');
 
@@ -50,7 +51,6 @@ MainMenu.prototype.create=function(){
   // PlayButton.onInputOver.add(over, this);
   PlayButton.inputEnabled=true;
   PlayButton.events.onInputDown.add(actionOnClick, this);
-
   QuitButton.inputEnabled=true;
   QuitButton.events.onInputDown.add(quitFunction,this);
 
@@ -58,6 +58,13 @@ cursor= game.add.sprite(0,0,"cursor");
 cursor.scale.setTo(5,5);
 //cursor.anchor(0.5,0.5);
 cursor.smoothed=false;
+
+cursor= game.add.sprite(0,0,"cursor");
+cursor.scale.setTo(8,8);
+//cursor.anchor(0.5,0.5);
+cursor.smoothed=false;
+console.log("HELP ME");
+
 }
 
 
@@ -77,6 +84,7 @@ function actionOnClick () {
     game.state.start("main");
 
 }
+
 
 function quitFunction(){
 	game.destroy();
