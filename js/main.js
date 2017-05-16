@@ -1,4 +1,20 @@
-var game = new Phaser.Game(800, 1200, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+/*
+Art is 2.5-D style. Keep that in mind when programming.
+
+
+Main character is a mail man when starting off. Maybe a mine worker by the end.
+RPG-walking simulator?
+
+Mechanics:  walking
+				-walking will be free movement style based.
+			
+			interacting, talking with people, dialogue choices.
+
+Ideas: Rally you cna go to for possible story ending or just going home. Possibly affect change of story.
+		-people enter your mail office in government attire and you aren't sure what they are doing. Possible beginning story arc.
+
+		Phase 1: Just go deliver a simple package and talk to your neighbors. Pretty simple.
+*/
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -7,82 +23,119 @@ function getRandomIntInclusive(min, max) {
 
 var counter=0;
 var text;
-function preload(){
-this.game.load.image('ship','assets/img/ship.png');
-this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
-this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
-}
+
+var character;
+var npc1;
+var npc2;
+
+var tileSprite;
+
+var worldWidth=1920;
+var worldHeight=1080;
+
+var BGM;
 
 
-function create(){
-//var image= game.add.sprite(game.world.centerX*.2,game.world.centerY*.1,"tier1Button");
-//image.anchor.set(0.5);
-//image.inputEnabled=true;
-text= game.add.text(256,16,"",{fill: "#ffffff"});
-var but=new button1();
-but.anchor.set(0.5);
-but.inputEnabled=true;
-but.events.onInputDown.add(button1Click,this);
-game.add.existing(but);
-game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
-//image.events.onInputDown.add(listener,this);
-/*
-this.game.physics.startSystem(Phaser.Physics.ARCADE); //start up the arcade physics system
-swapKey= this.game.input.keyboard.addKey(Phaser.Keyboard.R);
+var main=function(game){
+console.log("Playing my awesome game :LSLIADIJADILJ");
+};
 
-ships=game.add.group();
-//var ehh= new ship(96,96,.5,"assets/img/ship.png");
-for(var i=1; i<=50; i++){		
-var player= new ship(game,"ship", null,getRandomIntInclusive(1,3)); //game, asset, frame, scale, x, y;
+main.prototype.preload=function(){
 
-
-//	player.animations.add("left",[0,1],10,true);
-//	player.animations.add("right",[2,3],10,true);
-
-
-ships.add(player);
-}
-
-for(var i=0; i<=ships.length; i++){
-	console.log("ships in group dtrdtr" + i);
-}
-
-*/
-}
-
-function listener(){
-counter++;
-text.text="You clicked "+ counter + " times!";
-}
-
-function update(){
-/*	
-	for (var i=0, len=ships.children.length; i<len; i++){
-	if((ships.children[i].x<0-ships.children[i].width) && ships.children[i].body.velocity.x<0){
-		console.log("wrap right");
-		ships.children[i].x=game.width;
-		}
-		else if( (ships.children[i].x>game.width) && ships.children[i].body.velocity.x>0 ){
-			console.log("wrap left");
-		ships.children[i].x=0-ships.children[i].width;
-		}
-	}
-*/
-}
-
-function render(){
 
 }
 
+main.prototype.createAllNPCS=function(){
+	npc1= new NPC1(game.world.centerX*1.3,game.world.centerY*1.3,"ship");
+	this.game.physics.arcade.enable(npc1);
+	npc1.enableBody=true;
+	npc1.body.collideWorldBounds=true;
+	npc1.body.immovable=true;
+	npc1.body.enable=true;
+	npc1.dialogueIndex=dayNumber;
+	game.add.existing(npc1);
 
-function updateCounter(){
-console.log("RUN AN UPDATE222");
+	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.8,"ship");
+	this.game.physics.arcade.enable(npc2);
+	npc2.enableBody=true;
+	npc2.body.collideWorldBounds=true;
+	npc2.body.immovable=true;
+	npc2.body.enable=true;
+	npc2.dialogueIndex=dayNumber;
 
-counter+=(button1BaseMoney*button1Level)*(button1BasePower);
+	game.add.existing(npc2);
 
 
+}
 
-counter=Number((counter).toFixed(3)); // 6.7
-text.text="You have "+ counter + " points!";
+main.prototype.createCharacter=function(){
+	character= new player(game.world.centerX,game.world.centerY);
+	this.game.physics.arcade.enable(character);
+	character.enableBody=true;
+	character.body.collideWorldBounds=true;
+	character.body.onCollide = new Phaser.Signal();
+	character.body.onCollide.add(character.talk, this);
+	game.add.existing(character);	
+}
+
+main.prototype.create=function(){
+	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
+	this.game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
+	this.createAllNPCS();
+	this.createCharacter();
+	game.camera.follow(character);
+	game.time.events.loop(Phaser.Timer.SECOND, dialogueCountDown, this);
+	isDialogueUp=false;
+
+	BGM= game.add.audio("Town1");
+	BGM.loop=true;
+	BGM.play();
+
+	dayNumber=0;
+
+ 	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
+	game.input.onDown.add(this.gofull, this);
+
+
+}
+//this.game.stage.scale.refresh();
+
+
+main.prototype.gofull=function(){
+
+	 if (game.scale.isFullScreen)
+    {
+        game.scale.stopFullScreen();
+    }
+    else
+    {
+        game.scale.startFullScreen(false);
+    }
+
+
+	console.log("All good to go! v2");
+}
+
+
+main.prototype.listener=function(){
+	counter++;
+//text.text="You clicked "+ counter + " times!";
+}
+
+main.prototype.update=function(){
+	 //collision detection between player and entities is checked in Player.js
+this.game.canvas.style.cursor="ship";
+if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
+    {
+    	console.log("Space pressed");
+    	cleanDialogue();
+    }
+game.debug.inputInfo(32, 32);
+}
+
+main.prototype.render=function(){
+
 }
 
