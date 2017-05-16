@@ -18,7 +18,7 @@ this.game.load.image("cursor","assets/img/cursor.png");
 
 
 
-	this.game.load.image("PlayButton","assets/img/MainMenu/Buttons/PlayButton.png");
+	this.game.load.image("BlankButton","assets/img/MainMenu/Buttons/PlayButton.png");
 
 	game.load.audio("Town1",["assets/audio/BGM/Town1.m4a","assets/audio/BGM/Town1.mp3","assets/audio/BGM/Town1.wav"]);
 
