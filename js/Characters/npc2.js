@@ -3,7 +3,7 @@ Todo: Make dialogue box system. Place text box at bottom of the screen. Make it 
 */
 var NPC2= function(xPos,yPos,npcString){
 Phaser.Sprite.call(this,game,xPos,yPos,npcString,null);
-console.log("Make a npc");
+console.log("Make a npc 2");
 }
 
 NPC2.prototype= Object.create(Phaser.Sprite.prototype);
@@ -18,6 +18,7 @@ NPC2.prototype.update=function(){
 //console.log("MEH");
 }
 
+NPC2.prototype.name="Billy";
 
 NPC2.prototype.sentences=[
 
@@ -47,15 +48,6 @@ if(this.dialogueCount>(this.sentences[this.dialogueIndex][0])){
 else{
   
 }
-
 //do more logic checking here to get the correct list of npc dialogue
-dialogueBox = game.add.sprite(game.camera.x, game.camera.y+450, 'DialogueBox');
-dialogueTimmer=5;
-dialogue= game.add.text(game.camera.x+20,game.camera.y+475,this.sentences[this.dialogueIndex][this.dialogueCount],{fill: "#abcdef"});
-dialogue.text=this.sentences[this.dialogueIndex][this.dialogueCount];
-//console.log("dialogue is drawn");
-
-this.dialogueCount++;
-isDialogueUp=true;
-
+createDialogueSetUp(this.sentences[this.dialogueIndex][this.dialogueCount],this);
 }

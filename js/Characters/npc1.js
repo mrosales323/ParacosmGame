@@ -18,6 +18,7 @@ NPC1.prototype.update=function(){
 //console.log("MEH");
 }
 
+NPC1.prototype.name="Sandy";
 
 NPC1.prototype.sentences=[
 
@@ -29,9 +30,10 @@ NPC1.prototype.sentences=[
     "This is Some Text"
     ],
     //[1,x]
-    [2,
+    [3,
     "This is what it looks like.",
-    "To have multiple dialogue lists"
+    "To have multiple dialogue lists",
+    "Cool huh?"
     ]
 
 ];
@@ -47,15 +49,8 @@ if(this.dialogueCount>(this.sentences[this.dialogueIndex][0])){
 else{
   
 }
-
 //do more logic checking here to get the correct list of npc dialogue
-dialogueBox = game.add.sprite(game.camera.x, game.camera.y+450, 'DialogueBox');
-dialogueTimmer=5;
-dialogue= game.add.text(game.camera.x+20,game.camera.y+475,this.sentences[this.dialogueIndex][this.dialogueCount],{fill: "#abcdef"});
-dialogue.text=this.sentences[this.dialogueIndex][this.dialogueCount];
-//console.log("dialogue is drawn");
-
-this.dialogueCount++;
-isDialogueUp=true;
+createDialogueSetUp(this.sentences[this.dialogueIndex][this.dialogueCount],this);
+console.log("NPC 1 talking");
 
 }

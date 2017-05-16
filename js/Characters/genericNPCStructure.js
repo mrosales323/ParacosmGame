@@ -49,7 +49,8 @@ else{
 }
 
 //do more logic checking here to get the correct list of npc dialogue
-dialogueBox = game.add.sprite(game.camera.x, game.camera.y+450, 'DialogueBox');
+createDialogueSetUp();
+
 dialogueTimmer=5;
 dialogue= game.add.text(game.camera.x+20,game.camera.y+475,this.sentences[this.dialogueIndex][this.dialogueCount],{fill: "#abcdef"});
 dialogue.text=this.sentences[this.dialogueIndex][this.dialogueCount];
@@ -58,12 +59,4 @@ console.log("dialogue is drawn");
 this.dialogueCount++;
 isDialogueUp=true;
 
-}
-
-
-
-function button1Click(){
-console.log("YAY");
-button1Level+=1;
-priceText.text="Button Level " + button1Level;
 }
