@@ -72,6 +72,10 @@ main.prototype.createCharacter=function(){
 	character.body.collideWorldBounds=true;
 	character.body.onCollide = new Phaser.Signal();
 	character.body.onCollide.add(character.talk, this);
+	
+	character.scale.setTo(.25,.25);
+	console.log("make my mail man man or else I might mail you a male.");
+
 	game.add.existing(character);	
 }
 
@@ -126,11 +130,7 @@ main.prototype.listener=function(){
 }
 
 main.prototype.update=function(){
-if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
-    {
-    	console.log("Space pressed");
-    	cleanDialogue();
-    }
+dialogueUpdate();
 game.debug.inputInfo(32, 32);
 }
 
