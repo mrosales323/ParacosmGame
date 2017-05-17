@@ -126,8 +126,6 @@ main.prototype.listener=function(){
 }
 
 main.prototype.update=function(){
-	 //collision detection between player and entities is checked in Player.js
-this.game.canvas.style.cursor="ship";
 if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
     {
     	console.log("Space pressed");

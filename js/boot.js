@@ -3,7 +3,7 @@ var game = new Phaser.Game(1280, 720, Phaser.AUTO, '', { preload: preload, creat
 
 function preload(){
 
-this.game.load.image("cursor","assets/img/cursor.png");
+	this.game.load.image("cursor","assets/img/cursor.png");
 
 	this.game.load.image('ship','assets/img/ship.png');
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
@@ -32,9 +32,12 @@ this.game.load.image("cursor","assets/img/cursor.png");
 
 
 function create(){
+	game.add.plugin(PhaserInput.Plugin);
 
-	console.log("Booting up v2");
+
+	console.log("Booting up v3");
 	game.state.add("main",main);
+	game.state.add("nameSelectionMenu",nameSelectionMenu);
 	game.state.add("MainMenu",MainMenu);
 	//game.state.add("instructions",instructions);
 	//game.state.add("credits",credits);

@@ -10,7 +10,7 @@ var OptionsButton;
 var OptionsButtonText;
 var cursor;
 
-
+var password;
 
 var MainMenu=function(game){
 console.log("Loading My Main Menu");
@@ -59,11 +59,10 @@ cursor.scale.setTo(5,5);
 //cursor.anchor(0.5,0.5);
 cursor.smoothed=false;
 
-cursor= game.add.sprite(0,0,"cursor");
-cursor.scale.setTo(8,8);
-//cursor.anchor(0.5,0.5);
-cursor.smoothed=false;
-console.log("HELP ME");
+
+console.log("RAWR");
+
+
 
 }
 
@@ -80,8 +79,8 @@ MainMenu.prototype.render=function(){
 
 
 function actionOnClick () {
-
-    game.state.start("main");
+    //console.log(password.value.toString());
+    game.state.start("nameSelectionMenu");
 
 }
 
