@@ -46,13 +46,13 @@ MainMenu.prototype.create=function(){
     OptionsButtonText = game.add.text(OptionsButton.centerX*.925, OptionsButton.centerY*.95, "Options", OptionsButtonStyle);
 
 
-//PlayButtonText=game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
- // PlayButtonText.anchor.set(0.5);
-  // PlayButton.onInputOver.add(over, this);
   PlayButton.inputEnabled=true;
   PlayButton.events.onInputDown.add(actionOnClick, this);
   QuitButton.inputEnabled=true;
   QuitButton.events.onInputDown.add(quitFunction,this);
+
+
+  
 
 cursor= game.add.sprite(0,0,"cursor");
 cursor.scale.setTo(5,5);

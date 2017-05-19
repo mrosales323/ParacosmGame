@@ -27,6 +27,7 @@ var text;
 var character;
 var npc1;
 var npc2;
+var npc3;
 
 var tileSprite;
 
@@ -62,7 +63,25 @@ main.prototype.createAllNPCS=function(){
 	npc2.dialogueIndex=dayNumber;
 	game.add.existing(npc2);
 
+	npc3= new NPC3(game.world.centerX*0.5,game.world.centerY*1.8,"ship");
+	this.game.physics.arcade.enable(npc3);
+	npc3.enableBody=true;
+	npc3.body.enable=true;
+	npc3.body.collideWorldBounds=true;
+	npc3.body.immovable=true;
+	npc3.dialogueIndex=dayNumber;
+	game.add.existing(npc3);
 
+	npc4= new NPC1(game.world.centerX*1.3,game.world.centerY*0.3,"ship");
+	this.game.physics.arcade.enable(npc4);
+	npc4.enableBody=true;
+	npc4.body.collideWorldBounds=true;
+	npc4.body.immovable=true;
+	//npc4.body.enable=true;
+	npc4.dialogueIndex=dayNumber;
+	game.add.existing(npc4);
+
+console.log("finish making my npcs");
 }
 
 main.prototype.createCharacter=function(){
@@ -132,6 +151,13 @@ main.prototype.listener=function(){
 main.prototype.update=function(){
 dialogueUpdate();
 game.debug.inputInfo(32, 32);
+
+
+   game.physics.arcade.collide(character,npc1);
+   game.physics.arcade.collide(character,npc2);
+   game.physics.arcade.collide(character,npc3);
+   game.physics.arcade.collide(character,npc4);
+  // console.log("UPDATE THE thing ALREADY");
 }
 
 main.prototype.render=function(){
