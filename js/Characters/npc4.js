@@ -18,13 +18,13 @@ NPC4.prototype.update=function(){
 //console.log("MEH");
 }
 
-NPC4.prototype.name="Sandyssss";
+NPC4.prototype.name="Helen";
 
 NPC4.prototype.sentences=[
 
     [2,
-    "Oh hey....",
-    "Man there is too much to read in school. Is that a letter to me from Jenny?!"
+    "Hello there. The kids just got out of class. \nWhat a bright bunch I have got this year.",
+    "A letter from the committee? Why thank you.",
     ]
 
 ];

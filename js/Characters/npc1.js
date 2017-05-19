@@ -33,7 +33,7 @@ NPC1.prototype.sentences=[
     */
     //[1,x]
     [2,
-    "Oh hey....",
+    "Oh hey "+playerName+"....",
     "Man there is too much to read in school. Is that a letter to me from Jenny?!"
     ]
 

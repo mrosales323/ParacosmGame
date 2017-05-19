@@ -35,7 +35,7 @@ function create(){
 	game.add.plugin(PhaserInput.Plugin);
 
 
-	console.log("Booting up v3");
+	console.log("Booting up v4");
 	game.state.add("main",main);
 	game.state.add("nameSelectionMenu",nameSelectionMenu);
 	game.state.add("MainMenu",MainMenu);

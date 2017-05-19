@@ -52,6 +52,29 @@ main.prototype.createAllNPCS=function(){
 	npc1.body.immovable=true;
 	npc1.body.enable=true;
 	npc1.dialogueIndex=dayNumber;
+
+
+npc1.sentences=[
+
+    //first numeric value represents the number of strings in that dialogue list.
+    //[0,x]
+    /*
+    [3,
+    "Hello",
+    "Boop",
+    "This is Some Text"
+    ],
+    */
+    //[1,x]
+    [2,
+    "Oh hey there "+playerName+"....",
+    "Man there is too much to read in school. Is that a letter to me from Jenny?!"
+    ]
+
+];
+
+
+
 	game.add.existing(npc1);
 
 	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.8,"ship");
@@ -72,7 +95,7 @@ main.prototype.createAllNPCS=function(){
 	npc3.dialogueIndex=dayNumber;
 	game.add.existing(npc3);
 
-	npc4= new NPC1(game.world.centerX*1.3,game.world.centerY*0.3,"ship");
+	npc4= new NPC4(game.world.centerX*1.3,game.world.centerY*0.3,"ship");
 	this.game.physics.arcade.enable(npc4);
 	npc4.enableBody=true;
 	npc4.body.collideWorldBounds=true;
@@ -158,6 +181,7 @@ game.debug.inputInfo(32, 32);
    game.physics.arcade.collide(character,npc3);
    game.physics.arcade.collide(character,npc4);
   // console.log("UPDATE THE thing ALREADY");
+  console.log(playerName);
 }
 
 main.prototype.render=function(){

@@ -52,9 +52,9 @@ npc.dialogueCount++;
 }
 
 function dialogueUpdate(){
-if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
+if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
     {
-    	//console.log("Space pressed");
-    	//cleanDialogue();
+    	console.log("Escape from socializing!!!");
+    	cleanDialogue();
     }
 }
