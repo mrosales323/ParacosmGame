@@ -6,6 +6,8 @@ var portraitBox;
 var nameTagBox;
 
 var npcName;
+var npcPortrait;
+
 
 var isDialogueUp;
 
@@ -30,6 +32,7 @@ function cleanDialogue(){
 		portraitBox.kill();
 		nameTagBox.kill();
 		npcName.kill();
+		npcPortrait.kill();
 		console.log("Boom BAM");
 		isDialogueUp=false;
 }
@@ -43,6 +46,8 @@ npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-24
 npcName.text=npc.name;
 
 //dialogueBox.scale.setTo(game.world.scale.x*2,game.world.scale.y);
+
+npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
 
 dialogue= game.add.text(game.camera.x+75,game.camera.y+game.height-175,{fill: "#abcdef"});
 dialogue.text=dialogueString;

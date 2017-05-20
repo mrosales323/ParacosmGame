@@ -16,6 +16,8 @@ var nameSelectionMenu=function(frame){
 
 nameSelectionMenu.prototype.create=function(){
  
+console.log("Enterthe name menu");
+
 	 namefield = game.add.inputField(game.world.centerX*.975, game.world.centerY*.7, {
     font: '18px Arial',
     fill: '#212121',
@@ -25,14 +27,17 @@ nameSelectionMenu.prototype.create=function(){
     borderWidth: 1,
     borderColor: '#000',
     borderRadius: 6,
-    placeHolder: 'Input Field',
+    placeHolder: 'Your name here',
     type: PhaserInput.InputType.text
 });
 
 	confirmNameButton = game.add.sprite(game.world.centerX, game.world.centerY, 'BlankButton');
 
-    var confirmNameButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: confirmNameButton.width, align: "center" };
-    confirmNameButtonText = game.add.text(confirmNameButton.centerX*.95, PlayButton.centerY*.95, "Confirm Name", confirmNameButtonStyle);
+    var confirmNameButtonStyle = { font: "16px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: confirmNameButton.width, align: "center" };
+    confirmNameButtonText = game.add.text(confirmNameButton.centerX*.925, confirmNameButton.centerY*.95, "Confirm Name", confirmNameButtonStyle);
+
+   var playerSprite= game.add.sprite(game.world.centerX*1.05,game.world.centerY*1.5,"Player");
+   playerSprite.scale.setTo(.4,.4);
   
     confirmNameButton.inputEnabled=true;
     confirmNameButton.events.onInputDown.add(this.actionOnClick, this);
@@ -55,6 +60,7 @@ nameSelectionMenu.prototype.render=function(){
 }
 
 nameSelectionMenu.prototype.actionOnClick=function(){
+if(namefield.value.toString()=="") return;
 playerName=namefield.value.toString();
 console.log(playerName);
 game.state.start("main");

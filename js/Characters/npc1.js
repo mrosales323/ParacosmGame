@@ -1,3 +1,5 @@
+var playerName;
+
 /*
 Todo: Make dialogue box system. Place text box at bottom of the screen. Make it where when colliding with npc you can press space to talk. 
 */

@@ -5,12 +5,26 @@ function preload(){
 	this.game.load.image("cursor","assets/img/cursor.png");
 
 	this.game.load.image('ship','assets/img/ship.png');
+
+
+	this.game.load.image('Sandy','assets/img/Characters/npc1.png');
+	this.game.load.image('Billy','assets/img/Characters/npc2.png');
+	this.game.load.image('Alex','assets/img/Characters/npc3.png');
+	this.game.load.image('Helen','assets/img/Characters/npc4.png');
+
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("Player","assets/img/Player/player.png");
 	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
 	this.game.load.image("PortraitBox","assets/img/Displays/PortraitBox.png");
 	this.game.load.image("NameTagBox","assets/img/Displays/NameTagBox.png");
+
+	this.game.load.image("letter","assets/img/Displays/emptyLetter.png");
+	this.game.load.image("mail","assets/img/Displays/letter.png");
+	//this.game.load.image("letter","assets/img/Displays/mail.png");
+	this.game.load.image("mailBag","assets/img/Displays/mailBag.png");
+	this.game.load.image("MailBox","assets/img/tiles/shittyMailBox.png");
+	this.game.load.image("Tree1","assets/img/tiles/shittyTree.png");
 
 
 	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
@@ -20,6 +34,9 @@ function preload(){
 	this.game.load.image("BlankButton","assets/img/MainMenu/Buttons/PlayButton.png");
 
 	game.load.audio("Town1",["assets/audio/BGM/Town1.m4a","assets/audio/BGM/Town1.mp3","assets/audio/BGM/Town1.wav"]);
+
+
+
 
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;  
 	this.scale.pageAlignHorizontally = true;

@@ -1,3 +1,5 @@
+var playerName;
+var canPlayerMove;
 
 var somevar1;
 var somevar2;
@@ -37,7 +39,7 @@ if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false)
 
 player.prototype.update=function(){
 //console.log("MEH");
-	if(isDialogueUp==true) return;
+	if(isDialogueUp==true || canPlayerMove==false) return;
 	//console.log("This is running");
 
  	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
@@ -62,5 +64,12 @@ player.prototype.update=function(){
    game.physics.arcade.collide(character,npc2);
    game.physics.arcade.collide(character,npc3);
    game.physics.arcade.collide(character,npc4);
+   game.physics.arcade.collide(character,mailBox);
+
+   game.physics.arcade.collide(character, trees, this.collisionHandler, null, this);
     //console.log("AHHHH");
+}
+
+player.prototype.collisionHandler=function(){
+console.log("TREE");
 }
