@@ -27,7 +27,6 @@ var text;
 var character;
 var npc1;
 var npc2;
-var npc3;
 
 var tileSprite;
 
@@ -35,13 +34,49 @@ var worldWidth=1920;
 var worldHeight=1080;
 
 var BGM;
+//used to flipflop the mail state
+var flipflop;
 
+var mail
 
+var mailMenu;
+
+var cursor;
+//true if mail is open so the player cannot move
+//false if mail is not open so the player can move
 var main=function(game){
 console.log("Playing my awesome game :LSLIADIJADILJ");
 };
 
 main.prototype.preload=function(){
+	/*
+	this.game.load.image('ship','assets/img/ship.png');
+	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
+	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
+	this.game.load.image("Player","assets/img/Player/player.png");
+	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
+	this.game.load.image("PortraitBox","assets/img/Displays/PortraitBox.png");
+	this.game.load.image("NameTagBox","assets/img/Displays/NameTagBox.png");
+
+
+	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
+
+
+	game.load.audio("Town1",["assets/audio/BGM/Town1.m4a","assets/audio/BGM/Town1.mp3","assets/audio/BGM/Town1.wav"]);
+
+this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;  
+this.scale.pageAlignHorizontally = true;
+this.scale.pageAlignVertically = true;
+this.scale.refresh();
+*/
+
+}
+main.prototype.mailBag=function(){
+	//generate a mailbag
+	mail=new mail(game,'mailBag');
+	console.log("mailbag");
+	game.add.existing(mail);
+	
 }
 
 main.prototype.createAllNPCS=function(){
@@ -114,10 +149,6 @@ main.prototype.createCharacter=function(){
 	character.body.collideWorldBounds=true;
 	character.body.onCollide = new Phaser.Signal();
 	character.body.onCollide.add(character.talk, this);
-	
-	character.scale.setTo(.25,.25);
-	console.log("make my mail man man or else I might mail you a male.");
-
 	game.add.existing(character);	
 }
 
@@ -134,18 +165,23 @@ main.prototype.create=function(){
 	BGM= game.add.audio("Town1");
 	BGM.loop=true;
 	BGM.play();
-
-	dayNumber=0;
-
  	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-	game.input.onDown.add(this.gofull, this);
-
-
- game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-
-game.input.onDown.add(this.gofull, this);
-
+	//game.input.onDown.add(this.gofull, this);
+	this.mailBag();
+	mail.addToGroup();
+	mail.makeInvisible();
+	for(var i=0;i<10;i++){
+		mail.addToGroup();
+	}
+	//default to mail not being open
+	mailMenu=false;
+	cursor= game.add.sprite(0,0,"cursor");
+	cursor.scale.setTo(5,5);
+	//cursor.anchor(0.5,0.5);
+	cursor.anchor.setTo(0,0);
+	cursor.smoothed=false;
+	//game.add.existing(cursor);
 }
 //this.game.stage.scale.refresh();
 
@@ -172,16 +208,31 @@ main.prototype.listener=function(){
 }
 
 main.prototype.update=function(){
-dialogueUpdate();
-game.debug.inputInfo(32, 32);
+	cursor.x=game.input.x+game.camera.x;
+	cursor.y=game.input.y+game.camera.y;
+	//game.physics.arcade.moveToPointer(cursor, 800);
+	 //collision detection between player and entities is checked in Player.js
+	this.game.canvas.style.cursor="ship";
+	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
+	    {
+	    	console.log("Space pressed");
+	    	cleanDialogue();
+	    }
+	game.debug.inputInfo(32, 32);
 
-
-   game.physics.arcade.collide(character,npc1);
-   game.physics.arcade.collide(character,npc2);
-   game.physics.arcade.collide(character,npc3);
-   game.physics.arcade.collide(character,npc4);
-  // console.log("UPDATE THE thing ALREADY");
-  console.log(playerName);
+	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
+		if(!flipflop){
+			flipflop=true;
+			if(mail.visible==true){
+				mail.makeInvisible();
+			}else if(mail.visible==false){
+				mail.makeVisible();
+			}
+		}
+	}
+	if(game.input.keyboard.justReleased(Phaser.Keyboard.M)){
+		flipflop=false;
+	}
 }
 
 main.prototype.render=function(){

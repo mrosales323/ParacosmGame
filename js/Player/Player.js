@@ -1,5 +1,6 @@
 
-var playerName;
+var somevar1;
+var somevar2;
 
 var player = function(xPos,yPos){
 Phaser.Sprite.call(this,game,xPos,yPos,"Player",null);
@@ -21,6 +22,7 @@ console.log("Make my player");
 
 player.prototype= Object.create(Phaser.Sprite.prototype);
 player.prototype.constructor=player;
+
 
 player.prototype.create=function(){
 
