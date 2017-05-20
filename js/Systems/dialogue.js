@@ -51,10 +51,3 @@ isDialogueUp=true;
 npc.dialogueCount++;
 }
 
-function dialogueUpdate(){
-if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==true)
-    {
-    	console.log("Space pressed");
-    	cleanDialogue();
-    }
-}
