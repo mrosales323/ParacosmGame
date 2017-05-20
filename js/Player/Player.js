@@ -29,7 +29,10 @@ player.prototype.create=function(){
 }
 
 player.prototype.talk=function(player, npc){
-npc.talk();
+if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false)
+    {
+    npc.talk();
+    }
 }
 
 player.prototype.update=function(){
@@ -55,12 +58,9 @@ player.prototype.update=function(){
         this.body.y += 4;
     }
 
-   game.physics.arcade.collide(character, npc1);
+   game.physics.arcade.collide(character,npc1);
    game.physics.arcade.collide(character,npc2);
-}
-
-function button1Click(){
-console.log("YAY");
-button1Level+=1;
-priceText.text="Button Level " + button1Level;
+   game.physics.arcade.collide(character,npc3);
+   game.physics.arcade.collide(character,npc4);
+    //console.log("AHHHH");
 }

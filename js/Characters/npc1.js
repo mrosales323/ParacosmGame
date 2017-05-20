@@ -7,7 +7,7 @@ console.log("Make a npc");
 }
 
 NPC1.prototype= Object.create(Phaser.Sprite.prototype);
-NPC1.prototype.constructor=player;
+NPC1.prototype.constructor=NPC1;
 
 
 NPC1.prototype.create=function(){
@@ -24,16 +24,17 @@ NPC1.prototype.sentences=[
 
     //first numeric value represents the number of strings in that dialogue list.
     //[0,x]
+    /*
     [3,
     "Hello",
     "Boop",
     "This is Some Text"
     ],
+    */
     //[1,x]
-    [3,
-    "This is what it looks like.",
-    "To have multiple dialogue lists",
-    "Cool huh?"
+    [2,
+    "Oh hey "+playerName+"....",
+    "Man there is too much to read in school. Is that a letter to me from Jenny?!"
     ]
 
 ];

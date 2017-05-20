@@ -51,3 +51,10 @@ isDialogueUp=true;
 npc.dialogueCount++;
 }
 
+function dialogueUpdate(){
+if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
+    {
+    	console.log("Escape from socializing!!!");
+    	cleanDialogue();
+    }
+}
