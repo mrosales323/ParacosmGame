@@ -14,10 +14,10 @@ Phaser.Sprite.call(this,game,xPos,yPos,"Player",null);
 console.log("Make my player");
 
 
- this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
- this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
- this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
- this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
+ //this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+ //this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+ //this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+ //this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
 
 
 }
@@ -31,31 +31,33 @@ player.prototype.create=function(){
 }
 
 player.prototype.talk=function(player, npc){
-if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false)
-    {
-    npc.talk();
-    }
+if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false) npc.talk();    
 }
+player.prototype.yell=function(player,npc){
+    console.log("YELLING");
+    if(isDialogueUp==false) npc.talk();
+}
+
 
 player.prototype.update=function(){
 //console.log("MEH");
 	if(isDialogueUp==true || canPlayerMove==false) return;
 	//console.log("This is running");
 
- 	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+ 	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || game.input.keyboard.isDown(Phaser.KeyCode.A))
     {
         this.body.x -= 4;
     }
-    else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+    else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)|| game.input.keyboard.isDown(Phaser.KeyCode.D) )
     {
         this.body.x += 4;
     }
 
-    if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
+    if (game.input.keyboard.isDown(Phaser.Keyboard.UP) || game.input.keyboard.isDown(Phaser.KeyCode.W))
     {
         this.body.y -= 4;
     }
-    else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+    else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)|| game.input.keyboard.isDown(Phaser.KeyCode.S))
     {
         this.body.y += 4;
     }
@@ -65,7 +67,6 @@ player.prototype.update=function(){
    game.physics.arcade.collide(character,npc3);
    game.physics.arcade.collide(character,npc4);
    game.physics.arcade.collide(character,mailBox);
-
    game.physics.arcade.collide(character, trees, this.collisionHandler, null, this);
     //console.log("AHHHH");
 }

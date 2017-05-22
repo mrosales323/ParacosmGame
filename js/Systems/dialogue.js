@@ -63,3 +63,8 @@ if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
     	cleanDialogue();
     }
 }
+
+function clickToTalk(npc){
+	console.log("CLICKY CLICKY2222");
+	character.yell(character,npc);
+}

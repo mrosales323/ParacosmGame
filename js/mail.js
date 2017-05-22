@@ -129,6 +129,8 @@ mail.prototype.makeInvisible=function(){
 
 mail.prototype.deleteFromGroup=function(object){
 	//destroy an object from a group
+
+	//MAKE THE OBJECT INVISIBLE INSTEAD OF DELETING IT.
 }
 mail.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.ESC)){
