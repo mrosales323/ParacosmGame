@@ -69,6 +69,7 @@ mail.prototype.addToGroup=function(object){
 			letter.anchor.setTo(.5,.5);
 			letter.scale.setTo(20,20);
 			game.add.existing(letter);
+			letter.mailKey="key";
 			var printText=function(string){
 				var style = { font: "16px Arial", fill: "#000", 
 		        align: "left", // the alignment of the text is independent of the bounds, try changing to 'center' or 'right'
@@ -82,12 +83,18 @@ mail.prototype.addToGroup=function(object){
 			switch(stage){
 				case 1:
 					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						mailGroup.children[0].mailKey="George";
+						console.log(mailGroup.children[0].mailKey);
 						printText("LETTER1\n\nDear Josh,\n    I have figured out how to make text work in game for our mail system."+
 							"Its actually quite a simple system that will read the day and display the required text"+
 							"in a bounded text box.\n\n\nLove, Cole");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+150&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						mailGroup.children[0].mailKey="J-boy";
+						console.log(mailGroup.children[0].mailKey);
 						printText("LETTER2");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(2*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						mailGroup.children[0].mailKey="Becky";
+						console.log(mailGroup.children[0].mailKey);
 						printText("Letter3");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(3*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
 						printText("randomText");
@@ -132,6 +139,18 @@ mail.prototype.deleteFromGroup=function(object){
 
 	//MAKE THE OBJECT INVISIBLE INSTEAD OF DELETING IT.
 }
+mail.prototype.killLetter=function(){
+	if(letter){
+		letter.kill();
+		if(message){
+			message.kill();
+		}
+	}
+}
+mail.prototype.giveLetter=function(index){
+	mailGroup.children[index].visible=false;
+	mailGroup.children[index].inputEnabled=false;
+}
 mail.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.ESC)){
 		//letter.kill();
@@ -147,6 +166,7 @@ mail.prototype.update=function(){
 	for(var i=0;i<mailGroup.length;i++){
 		if(mailGroup.children[i].input.pointerOver()){
 			//check for click event
+
 			mailGroup.children[i].scale.setTo(7,7);
 		}else{
 			mailGroup.children[i].scale.setTo(6,6);
