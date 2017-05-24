@@ -15,7 +15,7 @@ NPC2.prototype.create=function(){
 }
 
 NPC2.prototype.update=function(){
-//console.log("MEH");
+
 }
 
 NPC2.prototype.name="Billy";

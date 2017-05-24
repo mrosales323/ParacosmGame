@@ -55,6 +55,7 @@ function create(){
 	game.state.add("main",main);
 	game.state.add("nameSelectionMenu",nameSelectionMenu);
 	game.state.add("MainMenu",MainMenu);
+	game.state.add("DaySelectionMenu",DaySelectionMenu);
 	//game.state.add("instructions",instructions);
 	//game.state.add("credits",credits);
 	//game.state.add("main",main);

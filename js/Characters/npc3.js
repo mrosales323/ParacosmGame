@@ -15,7 +15,7 @@ NPC3.prototype.create=function(){
 }
 
 NPC3.prototype.update=function(){
-//console.log("MEH");
+
 }
 
 NPC3.prototype.name="Alex";

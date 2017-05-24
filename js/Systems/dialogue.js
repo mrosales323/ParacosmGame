@@ -19,9 +19,9 @@ function dialogueCountDown(){
 		cleanDialogue();
 	}
 	else if(dialogueTimmer>0){
-		console.log(dialogueTimmer);
-		dialogueTimmer--;
-		//console.log(isDialogueUp);
+			console.log(dialogueTimmer);
+			dialogueTimmer--;
+			//console.log(isDialogueUp);
 	}
 }
 
@@ -38,22 +38,22 @@ function cleanDialogue(){
 }
 
 function createDialogueSetUp(dialogueString,npc){
-console.log("create some dialogue");
-dialogueBox = game.add.sprite(game.camera.x+50, game.camera.y+game.height-200, 'DialogueBox');
-portraitBox= game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-200,"PortraitBox");
-nameTagBox=game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-250,"NameTagBox");
-npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
-npcName.text=npc.name;
+	console.log("create some dialogue");
+	dialogueBox = game.add.sprite(game.camera.x+50, game.camera.y+game.height-200, 'DialogueBox');
+	portraitBox= game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-200,"PortraitBox");
+	nameTagBox=game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-250,"NameTagBox");
+	npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
+	npcName.text=npc.name;
 
 //dialogueBox.scale.setTo(game.world.scale.x*2,game.world.scale.y);
 
-npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
+	npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
 
-dialogue= game.add.text(game.camera.x+75,game.camera.y+game.height-175,{fill: "#abcdef"});
-dialogue.text=dialogueString;
-dialogueTimmer=5;
-isDialogueUp=true;
-npc.dialogueCount++;
+	dialogue= game.add.text(game.camera.x+75,game.camera.y+game.height-175,{fill: "#abcdef"});
+	dialogue.text=dialogueString;
+	dialogueTimmer=5;
+	isDialogueUp=true;
+	npc.dialogueCount++;
 }
 
 function dialogueUpdate(){

@@ -20,7 +20,7 @@ console.log("Loading My Main Menu");
 };
 
 MainMenu.prototype.preload=function(){
-console.log("Loading Main Menu Assets. Yum");
+console.log("Loading Main Menu Assets. YumYUMYUM");
 }
 
 
@@ -72,6 +72,7 @@ MainMenu.prototype.render=function(){
 
 function actionOnClick () {
     //console.log(password.value.toString());
+    ///window.open('www.nyan.cat');
     game.state.start("nameSelectionMenu");
 
 }
