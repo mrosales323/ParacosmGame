@@ -1,5 +1,10 @@
 var playerName;
-
+//temp var for dialogue
+var d;
+var temp;
+var temp2;
+var temp3;
+var active=false;
 /*
 Todo: Make dialogue box system. Place text box at bottom of the screen. Make it where when colliding with npc you can press space to talk. 
 */
@@ -16,9 +21,6 @@ NPC1.prototype.create=function(){
 
 }
 
-NPC1.prototype.update=function(){
-//console.log("MEH");
-}
 
 NPC1.prototype.name="Sandy";
 
@@ -45,15 +47,65 @@ NPC1.prototype.dialogueCount=1;
 NPC1.prototype.dialogueIndex=1;
 
 NPC1.prototype.talk=function(){
-if(dialogueTimmer!=-1) return;
-if(this.dialogueCount>(this.sentences[this.dialogueIndex][0])){
-    this.dialogueCount=1;
+    if(dialogueTimmer!=-1) return;
+    if(this.dialogueCount>(this.sentences[this.dialogueIndex][0])){
+        this.dialogueCount=1;
+    }
+    else{
+      
+    }
+    //do more logic checking here to get the correct list of npc dialogue
+    temp=[...this.sentences[this.dialogueIndex][this.dialogueCount]];
+    d=createDialogueSetUp(this.sentences[this.dialogueIndex][this.dialogueCount],this);
+    temp2=d.text;
+    d.text="";
+    temp3=[...temp2];
+
+    console.log("INDEX: "+this.dialogueIndex);
+    active=true
+    console.log("activated");    //console.log(d.text);
+
 }
-else{
-  
-}
-//do more logic checking here to get the correct list of npc dialogue
-createDialogueSetUp(this.sentences[this.dialogueIndex][this.dialogueCount],this);
-console.log("NPC 1 talking");
+var i=0;
+
+NPC1.prototype.update=function(){
+//console.log("MEH");
+    //console.log("sdfsdf");
+    //console.log("safsdfsg");
+    /*
+    if(temp3){
+            console.log(temp3.length);
+    }
+    if(temp){
+        console.log(temp.length);
+    }
+    */
+    if(active){
+        if(this.dialogueIndex==0){
+            if(i<temp3.length){
+                d.text=d.text+temp3[i];
+                console.log(d.text);
+                i++
+             }else{
+                active=false;
+                console.log("Deactivated");
+                i=0;
+             }
+        }else{
+            if(i<temp3.length){
+                d.text=d.text+temp3[i];
+                //console.log(d.text);
+                i++
+             }else{
+                active=false;
+                console.log(this.dialogueCount);
+                console.log(this.dialogueIndex);
+                console.log("Deactivatedsss");
+                i=0;
+             }
+        }
+
+    }
+
 
 }
