@@ -59,7 +59,9 @@ else{
 
     console.log("INDEX: "+this.dialogueIndex);
     active=true
-    console.log("activated"); 
+    console.log("activated");
+
+    mail.doesKeyMatch(this.name); 
 }
 var i=0;
 

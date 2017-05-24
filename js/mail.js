@@ -2,7 +2,6 @@
 var mailGroup;
 var m;
 
-var stage=1;
 //an integer that denotes the current stage
 
 //-------------------
@@ -83,18 +82,15 @@ mail.prototype.addToGroup=function(object){
 			switch(stage){
 				case 1:
 					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						mailGroup.children[0].mailKey="George";
 						console.log(mailGroup.children[0].mailKey);
 						printText("LETTER1\n\nDear Josh,\n    I have figured out how to make text work in game for our mail system."+
 							"Its actually quite a simple system that will read the day and display the required text"+
 							"in a bounded text box.\n\n\nLove, Cole");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+150&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						mailGroup.children[0].mailKey="J-boy";
-						console.log(mailGroup.children[0].mailKey);
+						console.log(mailGroup.children[1].mailKey);
 						printText("LETTER2");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(2*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						mailGroup.children[0].mailKey="Becky";
-						console.log(mailGroup.children[0].mailKey);
+						console.log(mailGroup.children[2].mailKey);
 						printText("Letter3");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(3*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
 						printText("randomText");
@@ -109,9 +105,30 @@ mail.prototype.addToGroup=function(object){
 			}
 
 		}, this);
+	//Initialize the mail keys for the stage here.
 	mailGroup.add(fuckYou);
 	console.log(mailGroup.length);
 }
+
+mail.prototype.setKeys=function(stage){
+	switch(stage){
+		case 1:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+		break;
+	}
+}
+
+mail.prototype.doesKeyMatch=function(npcName){
+	for (var i = mailGroup.length - 1; i >= 0; i--) {
+       //console.log("This is a mail key2222");
+       //console.log(mailGroup.children[i].mailKey);
+       if(mailGroup.children[i].mailKey==npcName) this.giveLetter(i);
+    }
+}
+
 mail.prototype.center=function(){
 	this.x=game.camera.x+game.camera.width/2;
 	this.y=game.camera.y+game.camera.height/2;

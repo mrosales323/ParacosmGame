@@ -26,6 +26,7 @@ var DaySevenButtonEnabled;
 var DaySevenButton;
 var DaySevenButtonText;
 
+var stage;
 
 var DaySelectionMenu=function(game){
 DayOneButtonEnabled=true;
@@ -111,31 +112,38 @@ DaySelectionMenu.prototype.render=function(){
 }
 
 DaySelectionMenu.prototype.startDayOne=function(){
+  stage=1;
   game.state.start("main");
 }
 
 DaySelectionMenu.prototype.startDayTwo=function(){
+  stage=2;
  console.log("Day 2 Begin!");
  // game.state.start("main");
 }
 
 DaySelectionMenu.prototype.startDayThree=function(){
+  stage=3;
  console.log("Day 3 Begin!");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDayFour=function(){
+  stage=4;
  console.log("Day 4 Begin!");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDayFive=function(){
+  stage=5;
  console.log("Day 5 Begin!");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDaySix=function(){
+  stage=6;
  console.log("Day 6 Begin!");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDaySeven=function(){
+  stage=7;
  console.log("Day 7 Begin!");
  // game.state.start("main");
 }

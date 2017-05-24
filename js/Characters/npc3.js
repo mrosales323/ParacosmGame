@@ -65,6 +65,8 @@ else{
     active=true
     console.log("activated");  
 
+    mail.doesKeyMatch(this.name);
+
 }
 var i=0;
 

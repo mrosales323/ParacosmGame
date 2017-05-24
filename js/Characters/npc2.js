@@ -59,6 +59,8 @@ else{
     console.log("INDEX: "+this.dialogueIndex);
     active=true
     console.log("activated");  
+
+    mail.doesKeyMatch(this.name);
 }
 var i=0;
 NPC2.prototype.update=function(){

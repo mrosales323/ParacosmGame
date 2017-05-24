@@ -20,7 +20,7 @@ console.log("Loading My Main Menu");
 };
 
 MainMenu.prototype.preload=function(){
-console.log("Loading Main Menu Assets. YumYUMYUM");
+console.log("Loading Main Menu Assets. Refresh v1");
 }
 
 

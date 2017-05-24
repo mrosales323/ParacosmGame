@@ -163,42 +163,42 @@ main.prototype.createTrees=function(){
 	
 	//top border
 	for(var treeCount=0; treeCount<45;treeCount++){
-	var tree = game.add.sprite(game.world.centerX*.05*treeCount,game.world.centerY*.001,"Tree1");	
-	this.game.physics.arcade.enable(tree);
-	tree.enableBody=true;
-	tree.body.collideWorldBounds=true;
-	tree.body.immovable=true;
-	trees.add(tree);
+		var tree = game.add.sprite(game.world.centerX*.05*treeCount,game.world.centerY*.001,"Tree1");	
+		this.game.physics.arcade.enable(tree);
+		tree.enableBody=true;
+		tree.body.collideWorldBounds=true;
+		tree.body.immovable=true;
+		trees.add(tree);
 	}
 
 	//bottom border
 	for(var treeCount=0; treeCount<45;treeCount++){
-	var tree = game.add.sprite(game.world.centerX*.05*treeCount,game.world.centerY*2,"Tree1");	
-	this.game.physics.arcade.enable(tree);
-	tree.enableBody=true;
-	tree.body.collideWorldBounds=true;
-	tree.body.immovable=true;
-	trees.add(tree);
+		var tree = game.add.sprite(game.world.centerX*.05*treeCount,game.world.centerY*2,"Tree1");	
+		this.game.physics.arcade.enable(tree);
+		tree.enableBody=true;
+		tree.body.collideWorldBounds=true;
+		tree.body.immovable=true;
+		trees.add(tree);
 	}
 
 	//left border
 	for(var treeCount=0; treeCount<45;treeCount++){
-	var tree = game.add.sprite(game.world.centerX*0,game.world.centerY*.2*treeCount,"Tree1");	
-	this.game.physics.arcade.enable(tree);
-	tree.enableBody=true;
-	tree.body.collideWorldBounds=true;
-	tree.body.immovable=true;
-	trees.add(tree);
+		var tree = game.add.sprite(game.world.centerX*0,game.world.centerY*.2*treeCount,"Tree1");	
+		this.game.physics.arcade.enable(tree);
+		tree.enableBody=true;
+		tree.body.collideWorldBounds=true;
+		tree.body.immovable=true;
+		trees.add(tree);
 	}
 
 	//right border
 	for(var treeCount=0; treeCount<45;treeCount++){
-	var tree = game.add.sprite(game.world.centerX*2,game.world.centerY*.2*treeCount,"Tree1");	
-	this.game.physics.arcade.enable(tree);
-	tree.enableBody=true;
-	tree.body.collideWorldBounds=true;
-	tree.body.immovable=true;
-	trees.add(tree);
+		var tree = game.add.sprite(game.world.centerX*2,game.world.centerY*.2*treeCount,"Tree1");	
+		this.game.physics.arcade.enable(tree);
+		tree.enableBody=true;
+		tree.body.collideWorldBounds=true;
+		tree.body.immovable=true;
+		trees.add(tree);
 	}
 
 	console.log("OAK AND PINE MAKE NO RESEIN.")
@@ -228,6 +228,7 @@ main.prototype.create=function(){
 	for(var i=0;i<10;i++){
 		mail.addToGroup();
 	}
+	mail.setKeys(stage);
 	//default to mail not being open
 	mailMenu=false;
 	cursor= game.add.sprite(0,0,"cursor");
@@ -269,6 +270,12 @@ main.prototype.update=function(){
 			}else if(mail.visible==false){
 				mail.makeVisible();
 				canPlayerMove=false;
+
+
+					for (var i = mailGroup.length - 1; i >= 0; i--) {
+						console.log("I HAVE LOTS OF MAIL " + i);
+						console.log(mailGroup.children[i].mailKey);
+					}
 			}
 		}
 	}
