@@ -65,6 +65,8 @@ function dialogueUpdate(){
 }
 
 function clickToTalk(npc){
-	console.log("CLICKY CLICKY2222");
+	console.log("Ok? I am clicking");
+	
+	if(canPlayerMove==false) return;
 	character.yell(character,npc);
 }

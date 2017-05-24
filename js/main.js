@@ -229,6 +229,11 @@ main.prototype.create=function(){
 		mail.addToGroup();
 	}
 	mail.setKeys(stage);
+
+
+	mail.setUp(stage);
+
+
 	//default to mail not being open
 	mailMenu=false;
 	cursor= game.add.sprite(0,0,"cursor");

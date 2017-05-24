@@ -121,6 +121,16 @@ mail.prototype.setKeys=function(stage){
 	}
 }
 
+mail.prototype.setUp=function(stage){
+	switch(stage){
+		case 1:
+			for(var i=3;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+	}
+}
+
 mail.prototype.doesKeyMatch=function(npcName){
 	for (var i = mailGroup.length - 1; i >= 0; i--) {
        //console.log("This is a mail key2222");
