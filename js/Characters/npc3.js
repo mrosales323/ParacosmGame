@@ -55,11 +55,11 @@ else{
   
 }
 //do more logic checking here to get the correct list of npc dialogue
-    temp=[this.sentences[this.dialogueIndex][this.dialogueCount]];
+    temp=[...this.sentences[this.dialogueIndex][this.dialogueCount]];
     d=createDialogueSetUp(this.sentences[this.dialogueIndex][this.dialogueCount],this);
     temp2=d.text;
     d.text="";
-    temp3=[temp2];
+    temp3=[...temp2];
 
     console.log("INDEX: "+this.dialogueIndex);
     active=true

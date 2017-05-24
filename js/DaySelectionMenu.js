@@ -30,23 +30,23 @@ var stage;
 
 var DaySelectionMenu=function(game){
 DayOneButtonEnabled=true;
-DayTwoButtonEnabled=true;
-DayThreeButtonEnabled=true;
-DayFourButtonEnabled=true;
-DayFiveButtonEnabled=true;
-DaySixButtonEnabled=true;
-DaySevenButtonEnabled=true;
+DayTwoButtonEnabled=false;
+DayThreeButtonEnabled=false;
+DayFourButtonEnabled=false;
+DayFiveButtonEnabled=false;
+DaySixButtonEnabled=false;
+DaySevenButtonEnabled=false;
 };
 
 DaySelectionMenu.prototype.preload=function(){
-  console.log("Loading Day Selection Menu.");
+  console.log("Loading Day Selection Menu again");
 }
 
 
 DaySelectionMenu.prototype.create=function(){
  
   // PlayButton= game.add.button(game.world.centerX - 95, 400, 'PlayButton', actionOnClick, this, 2, 1, 0);
-    
+  game.world.setBounds(0,0,1280,720);
   if(DayOneButtonEnabled==true){
     DayOneButton = game.add.sprite(game.world.centerX*.1, game.world.centerY*.1, 'BlankButton');
     var DayOneButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayOneButton.width, align: "center" };
@@ -103,6 +103,7 @@ DaySelectionMenu.prototype.create=function(){
 
 
 DaySelectionMenu.prototype.update=function(){
+  game.world.setBounds(0,0,1280,720);
 	cursor.x=game.input.x;
 	cursor.y=game.input.y;
 }

@@ -36,7 +36,18 @@ MailBox.prototype.dialogueCount=1;
 MailBox.prototype.dialogueIndex=1;
 
 MailBox.prototype.talk=function(){
+//this.name=playerName;
 //if(hasDeliveredAllMailForDay==true) DO SOME COOL STUFF.
-console.log("MAIL TIME!!!!!!!!!!!");
-
+	if(mail.hasDeliveredAllMail()==true){
+		switch(stage){
+			case 1:
+				DayTwoButtonEnabled=true
+				game.state.start("DaySelectionMenu");
+				break;
+		}
+	}
+	else{
+		console.log("Can't end the day yet.");
+		createDialogueSetUp("I haven't finished delivering all the mail yet.",this);
+	}
 }

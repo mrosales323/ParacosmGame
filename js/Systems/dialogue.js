@@ -43,11 +43,10 @@ function createDialogueSetUp(dialogueString,npc){
 	portraitBox= game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-200,"PortraitBox");
 	nameTagBox=game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-250,"NameTagBox");
 	npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
-	npcName.text=npc.name;
-
-	//dialogueBox.scale.setTo(game.world.scale.x*2,game.world.scale.y);
-
+	if(npc.name=="mailBox") npcName.text=playerName;
+	else npcName.text=npc.name;
 	npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
+	if(npcName.text==playerName)npcPortrait.scale.setTo(.4,.4);
 
 	dialogue= game.add.text(game.camera.x+75,game.camera.y+game.height-175,{fill: "#abcdef"});
 	dialogue.text=dialogueString;

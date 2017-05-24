@@ -15,6 +15,7 @@ function preload(){
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("Player","assets/img/Player/Player.png");
+	this.game.load.image("mailBox","assets/img/Player/Player.png");
 	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
 	this.game.load.image("PortraitBox","assets/img/Displays/PortraitBox.png");
 	this.game.load.image("NameTagBox","assets/img/Displays/NameTagBox.png");

@@ -1,12 +1,11 @@
 //-------------------
 var mailGroup;
 var m;
-
-//an integer that denotes the current stage
-
 //-------------------
 var letter;
 var message;
+
+var deliveredAllMail;
 //--------------------------------------------------------------------------
 //depending on the stage time load the notes with different sets of text then assign them a value
 
@@ -137,6 +136,15 @@ mail.prototype.doesKeyMatch=function(npcName){
        //console.log(mailGroup.children[i].mailKey);
        if(mailGroup.children[i].mailKey==npcName) this.giveLetter(i);
     }
+}
+
+mail.prototype.hasDeliveredAllMail=function(){
+	for (var i = mailGroup.length - 1; i >= 0; i--) {
+       //console.log("This is a mail key2222");
+       //console.log(mailGroup.children[i].mailKey);
+       if(mailGroup.children[i].visible==true) return false
+    }
+	return true;
 }
 
 mail.prototype.center=function(){
