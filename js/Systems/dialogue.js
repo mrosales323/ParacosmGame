@@ -45,7 +45,7 @@ function createDialogueSetUp(dialogueString,npc){
 	npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
 	npcName.text=npc.name;
 
-//dialogueBox.scale.setTo(game.world.scale.x*2,game.world.scale.y);
+	//dialogueBox.scale.setTo(game.world.scale.x*2,game.world.scale.y);
 
 	npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
 
@@ -54,10 +54,13 @@ function createDialogueSetUp(dialogueString,npc){
 	dialogueTimmer=5;
 	isDialogueUp=true;
 	npc.dialogueCount++;
+<<<<<<< HEAD
+=======
+	return dialogue;
+>>>>>>> 6f08d6c9194d5108a9ade4afc700efbb900333cf
 }
-
 function dialogueUpdate(){
-if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
     {
     	console.log("Escape from socializing!!!");
     	cleanDialogue();

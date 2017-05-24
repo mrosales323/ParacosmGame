@@ -264,6 +264,7 @@ main.prototype.update=function(){
 			flipflop=true;
 			if(mail.visible==true){
 				mail.makeInvisible();
+				mail.killLetter();
 				canPlayerMove=true;
 			}else if(mail.visible==false){
 				mail.makeVisible();
