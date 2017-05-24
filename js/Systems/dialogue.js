@@ -54,10 +54,7 @@ function createDialogueSetUp(dialogueString,npc){
 	dialogueTimmer=5;
 	isDialogueUp=true;
 	npc.dialogueCount++;
-<<<<<<< HEAD
-=======
 	return dialogue;
->>>>>>> 6f08d6c9194d5108a9ade4afc700efbb900333cf
 }
 function dialogueUpdate(){
 	if (game.input.keyboard.isDown(Phaser.Keyboard.ESC) && isDialogueUp==true)
