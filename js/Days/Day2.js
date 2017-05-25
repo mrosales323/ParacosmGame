@@ -15,50 +15,16 @@ Ideas: Rally you cna go to for possible story ending or just going home. Possibl
 
 		Phase 1: Just go deliver a simple package and talk to your neighbors. Pretty simple.
 */
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-var counter=0;
-var text;
-
-var character;
-var npc1;
-var npc2;
-var npc3;
-var npc4;
-var mailBox;
-
-var trees;
-
-var tileSprite;
-
-var worldWidth=1920;
-var worldHeight=1080;
-
-var BGM;
-//used to flipflop the mail state
-var flipflop;
-
-var mail;
-
-var mailMenu;
-
-var cursor;
-
-var leaf;
 //true if mail is open so the player cannot move
 //false if mail is not open so the player can move
-var main=function(game){
+var DayTwo=function(game){
 console.log("Playing my awesome game:");
 };
 
-main.prototype.preload=function(){
+DayTwo.prototype.preload=function(){
 
 }
-main.prototype.mailBag=function(){
+DayTwo.prototype.mailBag=function(){
 	//generate a mailbag
 	mail=new Mail(game,'mailBag');
 	console.log("mailbag");
@@ -66,7 +32,7 @@ main.prototype.mailBag=function(){
 	
 }
 
-main.prototype.createAllNPCS=function(){
+DayTwo.prototype.createAllNPCS=function(){
 	npc1= new NPC1(game.world.centerX*1.3,game.world.centerY*1.3,"Sandy");
 	this.game.physics.arcade.enable(npc1);
 	npc1.enableBody=true;
@@ -139,14 +105,12 @@ main.prototype.createAllNPCS=function(){
 	mailBox.smoothed=false;
 	mailBox.inputEnabled = true;
     mailBox.events.onInputDown.add(clickToTalk, this);
-    mailBox.createEx();
 	game.add.existing(mailBox);
-
-
-console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK");
+	mailBox.createEx();
+	console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK V22222222");
 }
 
-main.prototype.createCharacter=function(){
+DayTwo.prototype.createCharacter=function(){
 	character= new player(game.world.centerX,game.world.centerY);
 	this.game.physics.arcade.enable(character);
 	character.enableBody=true;
@@ -158,7 +122,7 @@ main.prototype.createCharacter=function(){
 	character.body.setSize(character.width/.4,character.height/.7,0,character.height*1.1);
 }
 
-main.prototype.createTrees=function(){
+DayTwo.prototype.createTrees=function(){
 	trees= game.add.group();
 	trees=game.add.physicsGroup();
 	trees.immovable=true;
@@ -206,12 +170,12 @@ main.prototype.createTrees=function(){
 	console.log("OAK AND PINE MAKE NO RESEIN.")
 }
 var _emitter;
-main.prototype.leafs=function(){
+DayTwo.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
 
 }
-main.prototype.create=function(){
+DayTwo.prototype.create=function(){
 	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
@@ -265,12 +229,12 @@ main.prototype.create=function(){
 //this.game.stage.scale.refresh();
 
 
-main.prototype.listener=function(){
+DayTwo.prototype.listener=function(){
 	counter++;
 //text.text="You clicked "+ counter + " times!";
 }
 
-main.prototype.update=function(){
+DayTwo.prototype.update=function(){
 
 	cursor.x=game.input.x+game.camera.x;
 	cursor.y=game.input.y+game.camera.y;
@@ -307,7 +271,7 @@ main.prototype.update=function(){
 	}
 }
 
-main.prototype.render=function(){
+DayTwo.prototype.render=function(){
    // game.debug.bodyInfo(character, 32, 32);
 
    // game.debug.body(character);

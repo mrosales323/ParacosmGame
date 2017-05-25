@@ -6,32 +6,21 @@ var somevar2;
 
 var player = function(xPos,yPos){
 Phaser.Sprite.call(this,game,xPos,yPos,"Player",null);
-
-//button1.anchor.set(0.5);
-
-
-//button1.events.onInputDown.add(button1Click,this);
 console.log("Make my player");
-
-
- //this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
- //this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
- //this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
- //this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
-
-
 }
 
 player.prototype= Object.create(Phaser.Sprite.prototype);
 player.prototype.constructor=player;
-
 
 player.prototype.create=function(){
 
 }
 
 player.prototype.talk=function(player, npc){
-if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false) npc.talk();    
+    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false){
+        if(npc==null || npc.name==null || npc.name==undefined || npc.talk==null) return;
+        if(npc.talk()!=null)  npc.talk(); 
+    }    
 }
 player.prototype.yell=function(player,npc){
     console.log("YELLING");
@@ -72,5 +61,5 @@ player.prototype.update=function(){
 }
 
 player.prototype.collisionHandler=function(){
-console.log("TREE");
+//console.log("TREE");
 }

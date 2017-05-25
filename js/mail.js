@@ -49,12 +49,12 @@ Mail.prototype.addToGroup=function(object){
 	fuckYou.smoothed=false;
 	fuckYou.events.onInputDown.add(
 		function(){
-			console.log("clicked");
+			//console.log("clicked");
 			//check the stage nad the index of the object clicked
 			//then display a new sprite on the screen with the text overlaying it
 			//depending on fuckYous current pos print different text to the box
-			console.log(fuckYou.x);
-			console.log(fuckYou.y);
+			//console.log(fuckYou.x);
+			//console.log(fuckYou.y);
 			if(letter){
 				letter.kill();
 				if(message){
@@ -81,15 +81,15 @@ Mail.prototype.addToGroup=function(object){
 			switch(stage){
 				case 1:
 					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						console.log(mailGroup.children[0].mailKey);
+						//console.log(mailGroup.children[0].mailKey);
 						printText("LETTER1\n\nDear Josh,\n    I have figured out how to make text work in game for our mail system."+
 							"Its actually quite a simple system that will read the day and display the required text"+
 							"in a bounded text box.\n\n\nLove, Cole");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+150&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						console.log(mailGroup.children[1].mailKey);
+						//console.log(mailGroup.children[1].mailKey);
 						printText("LETTER2");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(2*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
-						console.log(mailGroup.children[2].mailKey);
+						//console.log(mailGroup.children[2].mailKey);
 						printText("Letter3");
 					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(3*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
 						printText("randomText");
@@ -110,20 +110,88 @@ Mail.prototype.addToGroup=function(object){
 }
 
 Mail.prototype.setKeys=function(stage){
+	//Use this area to set which npc's that day get mail.
 	switch(stage){
 		case 1:
 			console.log("OK, here we go.")
 			mailGroup.children[0].mailKey="Alex";
 			mailGroup.children[1].mailKey="Sandy";
 			mailGroup.children[2].mailKey="Helen";
-		break;
+			break;
+		case 2:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
+		case 3:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
+		case 4:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
+		case 5:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
+		case 6:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
+		case 7:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Alex";
+			mailGroup.children[1].mailKey="Sandy";
+			mailGroup.children[2].mailKey="Helen";
+			break;
 	}
 }
 
 Mail.prototype.setUp=function(stage){
+	//change these values to set how many mail pieces need to be delivered for the day.
 	switch(stage){
 		case 1:
 			for(var i=3;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 2:
+			for(var i=0;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 3:
+			for(var i=0;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 4:
+			for(var i=0;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 5:
+			for(var i=0;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 6:
+			for(var i=0;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
+		case 7:
+			for(var i=0;i<mailGroup.length;i++){
 				mail.giveLetter(i);
 			}
 			break;
