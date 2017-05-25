@@ -42,7 +42,7 @@ var BGM;
 //used to flipflop the mail state
 var flipflop;
 
-var mail
+var mail;
 
 var mailMenu;
 
@@ -62,7 +62,7 @@ main.prototype.preload=function(){
 }
 main.prototype.mailBag=function(){
 	//generate a mailbag
-	mail=new mail(game,'mailBag');
+	mail=new Mail(game,'mailBag');
 	console.log("mailbag");
 	game.add.existing(mail);
 	
@@ -223,7 +223,7 @@ main.prototype.create=function(){
 	game.time.events.loop(Phaser.Timer.SECOND, dialogueCountDown, this);
 	isDialogueUp=false;
 
-	BGM= game.add.audio("Town1");
+	BGM= game.add.audio("village");
 	BGM.loop=true;
 	BGM.play();
  	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;

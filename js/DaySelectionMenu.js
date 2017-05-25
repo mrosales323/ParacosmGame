@@ -36,7 +36,19 @@ DayFourButtonEnabled=false;
 DayFiveButtonEnabled=false;
 DaySixButtonEnabled=false;
 DaySevenButtonEnabled=false;
+
+testThisThing();
 };
+
+function testThisThing(){
+DayOneButtonEnabled=true;
+DayTwoButtonEnabled=true;
+DayThreeButtonEnabled=true;
+DayFourButtonEnabled=true;
+DayFiveButtonEnabled=true;
+DaySixButtonEnabled=true;
+DaySevenButtonEnabled=true;
+}
 
 DaySelectionMenu.prototype.preload=function(){
   console.log("Loading Day Selection Menu again");
@@ -50,49 +62,50 @@ DaySelectionMenu.prototype.create=function(){
   if(DayOneButtonEnabled==true){
     DayOneButton = game.add.sprite(game.world.centerX*.1, game.world.centerY*.1, 'BlankButton');
     var DayOneButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayOneButton.width, align: "center" };
-    DayOneButtonText = game.add.text(DayOneButton.centerX*.85, DayOneButton.centerY*.95, "Day 1", DayOneButtonStyle);
+    DayOneButtonText = game.add.text(DayOneButton.centerX*.7, DayOneButton.centerY*.75, "Day 1", DayOneButtonStyle);
     DayOneButton.inputEnabled=true;
     DayOneButton.events.onInputDown.add(this.startDayOne, this);
   }
+  console.log("ZwwwwsssssaaaaaaaasdadasdasdasdaaaZZ");
     if(DayTwoButtonEnabled==true){
     DayTwoButton = game.add.sprite(game.world.centerX*.5, game.world.centerY*.1, 'BlankButton');
     var DayTwoButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayTwoButton.width, align: "center" };
-    DayTwoButtonText = game.add.text(DayTwoButton.centerX*.95, DayTwoButton.centerY*.95, "Day 2", DayTwoButtonStyle);
+    DayTwoButtonText = game.add.text(DayTwoButton.centerX*.9, DayTwoButton.centerY*.75, "Day 2", DayTwoButtonStyle);
     DayTwoButton.inputEnabled=true;
     DayTwoButton.events.onInputDown.add(this.startDayTwo, this);
   }
     if(DayThreeButtonEnabled==true){
     DayThreeButton = game.add.sprite(game.world.centerX*.9, game.world.centerY*.1, 'BlankButton');
     var DayThreeButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayThreeButton.width, align: "center" };
-    DayThreeButtonText = game.add.text(DayThreeButton.centerX*.95, DayThreeButton.centerY*.95, "Day 3", DayThreeButtonStyle);
+    DayThreeButtonText = game.add.text(DayThreeButton.centerX*.945, DayThreeButton.centerY*.75, "Day 3", DayThreeButtonStyle);
     DayThreeButton.inputEnabled=true;
     DayThreeButton.events.onInputDown.add(this.startDayThree, this);
   }
     if(DayFourButtonEnabled==true){
     DayFourButton = game.add.sprite(game.world.centerX*1.3, game.world.centerY*.1, 'BlankButton');
     var DayFourButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayFourButton.width, align: "center" };
-    DayFourButtonText = game.add.text(DayFourButton.centerX*.95, DayFourButton.centerY*.95, "Day 4", DayFourButtonStyle);
+    DayFourButtonText = game.add.text(DayFourButton.centerX*.95, DayFourButton.centerY*.75, "Day 4", DayFourButtonStyle);
     DayFourButton.inputEnabled=true;
     DayFourButton.events.onInputDown.add(this.startDayFour, this);
   }
     if(DayFiveButtonEnabled==true){
     DayFiveButton = game.add.sprite(game.world.centerX*1.7, game.world.centerY*.1, 'BlankButton');
     var DayFiveButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayFiveButton.width, align: "center" };
-    DayFiveButtonText = game.add.text(DayFiveButton.centerX*.95, DayFiveButton.centerY*.95, "Day 5", DayFiveButtonStyle);
+    DayFiveButtonText = game.add.text(DayFiveButton.centerX*.965, DayFiveButton.centerY*.75, "Day 5", DayFiveButtonStyle);
     DayFiveButton.inputEnabled=true;
     DayFiveButton.events.onInputDown.add(this.startDayFive, this);
   }
     if(DaySixButtonEnabled==true){
     DaySixButton = game.add.sprite(game.world.centerX*.1, game.world.centerY*.6, 'BlankButton');
     var DaySixButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DaySixButton.width, align: "center" };
-    DaySixButtonText = game.add.text(DaySixButton.centerX*.85, DaySixButton.centerY*.95, "Day 6", DaySixButtonStyle);
+    DaySixButtonText = game.add.text(DaySixButton.centerX*.70, DaySixButton.centerY*.93, "Day 6", DaySixButtonStyle);
     DaySixButton.inputEnabled=true;
     DaySixButton.events.onInputDown.add(this.startDaySix, this);
   }
     if(DaySevenButtonEnabled==true){
     DaySevenButton = game.add.sprite(game.world.centerX*.5, game.world.centerY*.6, 'BlankButton');
     var DaySevenButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DaySevenButton.width, align: "center" };
-    DaySevenButtonText = game.add.text(DaySevenButton.centerX*.95, DaySevenButton.centerY*.95, "Day 7", DaySevenButtonStyle);
+    DaySevenButtonText = game.add.text(DaySevenButton.centerX*.9, DaySevenButton.centerY*.93, "Day 7", DaySevenButtonStyle);
     DaySevenButton.inputEnabled=true;
     DaySevenButton.events.onInputDown.add(this.startDaySeven, this);
   }

@@ -20,29 +20,38 @@ console.log("Loading My Main Menu");
 };
 
 MainMenu.prototype.preload=function(){
-console.log("Loading Main Menu Assets. Refresh v1.0.3");
+console.log("Loading Main Menu Assets. Refresh v1.0.5");
 }
 
 
 MainMenu.prototype.create=function(){
  
   // PlayButton= game.add.button(game.world.centerX - 95, 400, 'PlayButton', actionOnClick, this, 2, 1, 0);
-    PlayButton = game.add.sprite(game.world.centerX, game.world.centerY, 'BlankButton');
-    var PlayButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: PlayButton.width, align: "center" };
-    PlayButtonText = game.add.text(PlayButton.centerX*.95, PlayButton.centerY*.95, "Play", PlayButtonStyle);
+  PlayButton = game.add.sprite(game.world.centerX, game.world.centerY, 'BlankButton');
+  PlayButton.anchor.x=0.5;
+  PlayButton.anchor.y=0.5;
+  var PlayButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: PlayButton.width, align: "center" };
+  PlayButtonText = game.add.text(PlayButton.centerX*.95, PlayButton.centerY*.95, "Play", PlayButtonStyle);
   
-    OptionsButton = game.add.sprite(game.world.centerX, game.world.centerY*1.25, 'BlankButton');
-    var OptionsButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: OptionsButton.width, align: "center" };
-    OptionsButtonText = game.add.text(OptionsButton.centerX*.925, OptionsButton.centerY*.95, "Options", OptionsButtonStyle);
+  OptionsButton = game.add.sprite(game.world.centerX, game.world.centerY*1.25, 'BlankButton');
+  OptionsButton.anchor.x=0.5;
+  OptionsButton.anchor.y=0.5;
+  var OptionsButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: OptionsButton.width, align: "center" };
+  OptionsButtonText = game.add.text(OptionsButton.centerX*.925, OptionsButton.centerY*.95, "Options", OptionsButtonStyle);
 
-    QuitButton = game.add.sprite(game.world.centerX, game.world.centerY*1.5, 'BlankButton');
-    var QuitButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: QuitButton.width, align: "center" };
-    QuitButtonText = game.add.text(QuitButton.centerX*.95, QuitButton.centerY*.96, "Quit", QuitButtonStyle);
+  
+  QuitButton = game.add.sprite(game.world.centerX, game.world.centerY*1.5, 'BlankButton');
+  QuitButton.anchor.x=0.5;
+  QuitButton.anchor.y=0.5;
+  var QuitButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: QuitButton.width, align: "center" };
+  QuitButtonText = game.add.text(QuitButton.centerX*.95, QuitButton.centerY*.96, "Quit", QuitButtonStyle);
 
 
-    fullScreenButton = game.add.sprite(game.world.centerX, game.world.centerY*1.75, 'BlankButton');
-    var fullScreenButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: fullScreenButton.width, align: "center" };
-    fullScreenButtonText = game.add.text(fullScreenButton.centerX*.935, fullScreenButton.centerY*.942, "Full Screen", fullScreenButtonStyle);
+  fullScreenButton = game.add.sprite(game.world.centerX, game.world.centerY*1.75, 'BlankButton');
+  fullScreenButton.anchor.x=0.5;
+  fullScreenButton.anchor.y=0.5;
+  var fullScreenButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: fullScreenButton.width, align: "center" };
+  fullScreenButtonText = game.add.text(fullScreenButton.centerX*.935, fullScreenButton.centerY*.942, "Full Screen", fullScreenButtonStyle);
 
 
   PlayButton.inputEnabled=true;
@@ -54,7 +63,6 @@ MainMenu.prototype.create=function(){
   fullScreenButton.events.onInputDown.add(fullScreenClick,this);
   cursor= game.add.sprite(0,0,"cursor");
   cursor.scale.setTo(5,5);
-  //cursor.anchor(0.5,0.5);
   cursor.smoothed=false;
 }
 
@@ -71,20 +79,12 @@ MainMenu.prototype.render=function(){
 
 
 function actionOnClick () {
-    //console.log(password.value.toString());
-    ///window.open('www.nyan.cat');
     game.state.start("nameSelectionMenu");
-
 }
 
 
 function quitFunction(){
 	game.destroy();
-}
-
-function over(){
-console.log("WTF22222");
-	///this.game.canvas.style.cursor = "none";
 }
 
 function fullScreenClick(){
@@ -96,5 +96,4 @@ function fullScreenClick(){
     {
         game.scale.startFullScreen(false);
     }
-  console.log("All good to go! v2");
 }

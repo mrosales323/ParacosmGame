@@ -26,8 +26,8 @@ function preload(){
 	this.game.load.image("mailBag","assets/img/Displays/mailBag.png");
 	this.game.load.image("MailBox","assets/img/tiles/shittyMailBox.png");
 	this.game.load.image("Tree1","assets/img/tiles/shittyTree.png");
-
 	this.game.load.image("leaf","assets/img/particles/leaf.png");
+	this.game.load.image("EXMark","assets/img/tiles/exclamationMark.png");
 
 
 	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
@@ -37,7 +37,7 @@ function preload(){
 	this.game.load.image("BlankButton","assets/img/MainMenu/Buttons/PlayButton.png");
 
 	game.load.audio("Town1",["assets/audio/BGM/Town1.m4a","assets/audio/BGM/Town1.mp3","assets/audio/BGM/Town1.wav"]);
-
+	game.load.audio("village",["assets/audio/BGM/village.mp3","assets/audio/BGM/village.ogg"]);
 
 
 
