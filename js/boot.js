@@ -27,6 +27,8 @@ function preload(){
 	this.game.load.image("MailBox","assets/img/tiles/shittyMailBox.png");
 	this.game.load.image("Tree1","assets/img/tiles/shittyTree.png");
 
+	this.game.load.image("leaf","assets/img/particles/leaf.png");
+
 
 	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
 
