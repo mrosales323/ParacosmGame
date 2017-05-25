@@ -49,6 +49,8 @@ var mailMenu;
 var cursor;
 
 var mailBox;
+
+var leaf;
 //true if mail is open so the player cannot move
 //false if mail is not open so the player can move
 var main=function(game){
@@ -203,7 +205,12 @@ main.prototype.createTrees=function(){
 
 	console.log("OAK AND PINE MAKE NO RESEIN.")
 }
+var _emitter;
+main.prototype.leafs=function(){
+	_emitter=game.add.emitter(game.centerX,game.centerY,600);
+	_emitter.makeParticles('leaf');
 
+}
 main.prototype.create=function(){
 	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -222,6 +229,18 @@ main.prototype.create=function(){
  	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
 	//game.input.onDown.add(this.gofull, this);
+
+	this.leafs();
+
+	//game.add.existing(cursor);
+	_emitter.start(false, 14000, 20);
+	_emitter.x=game.world.centerX;
+	_emitter.y=0;
+	_emitter.width=game.world.width;
+	_emitter.maxParticleScale = 3;
+    _emitter.minParticleScale = 2;
+    _emitter.setYSpeed(20, 100);
+    console.log("sfsdjkhgkje");
 	this.mailBag();
 	mail.addToGroup();
 	mail.makeInvisible();
@@ -242,8 +261,6 @@ main.prototype.create=function(){
 	cursor.anchor.setTo(0,0);
 	cursor.smoothed=false;
 
-
-	//game.add.existing(cursor);
 }
 //this.game.stage.scale.refresh();
 
@@ -254,6 +271,7 @@ main.prototype.listener=function(){
 }
 
 main.prototype.update=function(){
+
 	cursor.x=game.input.x+game.camera.x;
 	cursor.y=game.input.y+game.camera.y;
 	//game.physics.arcade.moveToPointer(cursor, 800);
