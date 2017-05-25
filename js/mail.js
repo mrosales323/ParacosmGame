@@ -9,7 +9,7 @@ var deliveredAllMail;
 //--------------------------------------------------------------------------
 //depending on the stage time load the notes with different sets of text then assign them a value
 
-var mail = function(game,key){
+var Mail = function(game,key){
 Phaser.Sprite.call(this,game,game.camera.x+game.camera.width/2,game.camera.y+game.camera.height/2,key,null);
 	console.log("Make my mailBag");
 	this.scale.setTo(30,20);
@@ -17,11 +17,11 @@ Phaser.Sprite.call(this,game,game.camera.x+game.camera.width/2,game.camera.y+gam
 	this.smoothed=false;
 }
 
-mail.prototype= Object.create(Phaser.Sprite.prototype);
-mail.prototype.constructor=mail;
+Mail.prototype= Object.create(Phaser.Sprite.prototype);
+Mail.prototype.constructor=Mail;
 
 
-mail.prototype.makeGrid=function(){
+Mail.prototype.makeGrid=function(){
 	//when mail is made visible this function will be called
 	//it orients the actual mail on the mailbag in a set grid
 	//mailGroup.createMultiple(5,'mail',true);
@@ -38,7 +38,7 @@ mail.prototype.makeGrid=function(){
 		}
 	}
 }
-mail.prototype.addToGroup=function(object){
+Mail.prototype.addToGroup=function(object){
 	if(!mailGroup){
 		mailGroup=game.add.group();
 	}
@@ -109,7 +109,7 @@ mail.prototype.addToGroup=function(object){
 	console.log(mailGroup.length);
 }
 
-mail.prototype.setKeys=function(stage){
+Mail.prototype.setKeys=function(stage){
 	switch(stage){
 		case 1:
 			console.log("OK, here we go.")
@@ -120,7 +120,7 @@ mail.prototype.setKeys=function(stage){
 	}
 }
 
-mail.prototype.setUp=function(stage){
+Mail.prototype.setUp=function(stage){
 	switch(stage){
 		case 1:
 			for(var i=3;i<mailGroup.length;i++){
@@ -130,7 +130,7 @@ mail.prototype.setUp=function(stage){
 	}
 }
 
-mail.prototype.doesKeyMatch=function(npcName){
+Mail.prototype.doesKeyMatch=function(npcName){
 	for (var i = mailGroup.length - 1; i >= 0; i--) {
        //console.log("This is a mail key2222");
        //console.log(mailGroup.children[i].mailKey);
@@ -138,7 +138,7 @@ mail.prototype.doesKeyMatch=function(npcName){
     }
 }
 
-mail.prototype.hasDeliveredAllMail=function(){
+Mail.prototype.hasDeliveredAllMail=function(){
 	for (var i = mailGroup.length - 1; i >= 0; i--) {
        //console.log("This is a mail key2222");
        //console.log(mailGroup.children[i].mailKey);
@@ -147,34 +147,34 @@ mail.prototype.hasDeliveredAllMail=function(){
 	return true;
 }
 
-mail.prototype.center=function(){
+Mail.prototype.center=function(){
 	this.x=game.camera.x+game.camera.width/2;
 	this.y=game.camera.y+game.camera.height/2;
 }
-mail.prototype.makeVisible=function(){
+Mail.prototype.makeVisible=function(){
 	this.visible=true;
 	mailGroup.visible=true;
 	//place the group
 	this.center();
 	this.makeGrid();
 }
-mail.prototype.checkUp=function(){
+Mail.prototype.checkUp=function(){
 	if(this.visible==true){
 		//its visible
 		return true;
 	}
 }
-mail.prototype.makeInvisible=function(){
+Mail.prototype.makeInvisible=function(){
 	this.visible=false;
 	mailGroup.visible=false;
 }
 
-mail.prototype.deleteFromGroup=function(object){
+Mail.prototype.deleteFromGroup=function(object){
 	//destroy an object from a group
 
 	//MAKE THE OBJECT INVISIBLE INSTEAD OF DELETING IT.
 }
-mail.prototype.killLetter=function(){
+Mail.prototype.killLetter=function(){
 	if(letter){
 		letter.kill();
 		if(message){
@@ -182,11 +182,12 @@ mail.prototype.killLetter=function(){
 		}
 	}
 }
-mail.prototype.giveLetter=function(index){
+Mail.prototype.giveLetter=function(index){
 	mailGroup.children[index].visible=false;
 	mailGroup.children[index].inputEnabled=false;
 }
-mail.prototype.update=function(){
+
+Mail.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.ESC)){
 		//letter.kill();
 		console.log("esc");
