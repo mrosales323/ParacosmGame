@@ -51,7 +51,7 @@ MailBox.prototype.talk=function(){
 		mail.kill();
 		BGM.pause();
 		EXMarkSprite.kill();
-		this.kill();
+		//this.kill();
 		switch(stage){
 			case 1:
 				DayTwoButtonEnabled=true;

@@ -5,14 +5,15 @@ function preload(){
 	this.game.load.image("cursor","assets/img/cursor.png");
 	this.game.load.image('ship','assets/img/ship.png');
 
-	this.game.load.image('Sandy','assets/img/Characters/npc1.png');
+	this.game.load.spritesheet('Sandy','assets/img/Characters/npc1.png',19,18,6);
 	this.game.load.image('Billy','assets/img/Characters/npc2.png');
-	this.game.load.image('Alex','assets/img/Characters/npc3.png');
+	this.game.load.spritesheet('Alex','assets/img/Characters/npc3.png',13,21,6);
 	this.game.load.image('Helen','assets/img/Characters/npc4.png');
 
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
 	this.game.load.image("masterClickButton","assets/img/Buttons/buttonTier1.png");
-	this.game.load.image("Player","assets/img/Player/Player.png");
+	this.game.load.spritesheet("Player","assets/img/Player/Player.png",21,27,8);
+	this.game.load.image("PlayerPortrait","assets/img/Player/PlayerPortrait.png");
 	this.game.load.image("mailBox","assets/img/Player/Player.png");
 	this.game.load.image("DialogueBox","assets/img/Displays/DialogueBox.png");
 	this.game.load.image("PortraitBox","assets/img/Displays/PortraitBox.png");
@@ -24,6 +25,8 @@ function preload(){
 	this.game.load.image("MailBox","assets/img/tiles/shittyMailBox.png");
 	this.game.load.image("Tree1","assets/img/tiles/shittyTree.png");
 	this.game.load.image("leaf","assets/img/particles/leaf.png");
+	this.game.load.image("Building","assets/img/tiles/Building.png");
+
 	this.game.load.image("EXMark","assets/img/tiles/exclamationMark.png");
 
 	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");

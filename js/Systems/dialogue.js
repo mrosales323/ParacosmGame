@@ -38,18 +38,30 @@ function cleanDialogue(){
 }
 
 function createDialogueSetUp(dialogueString,npc){
-	console.log("create some dialogue");
-	dialogueBox = game.add.sprite(game.camera.x+50, game.camera.y+game.height-200, 'DialogueBox');
-	portraitBox= game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-200,"PortraitBox");
-	nameTagBox=game.add.sprite(game.camera.x+game.width-230,game.camera.y+game.height-250,"NameTagBox");
-	npcName= game.add.text(game.camera.x+game.width-185,game.camera.y+game.height-240,{fill:"#abcdef"});
-	if(npc.name=="mailBox") npcName.text=playerName;
-	else npcName.text=npc.name;
-	npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
-	if(npcName.text==playerName)npcPortrait.scale.setTo(.4,.4);
+	console.log("create some dialoguessss");
+	dialogueBox = game.add.sprite(game.camera.x, game.camera.y+game.height-200, 'DialogueBox');
+	dialogueBox.scale.setTo(1.78,1);
+	portraitBox= game.add.sprite(game.camera.x+game.width-200,game.camera.y+game.height-200,"PortraitBox");
+	nameTagBox=game.add.sprite(game.camera.x+game.width-200,game.camera.y+game.height-250,"NameTagBox");
+	npcName= game.add.text(game.camera.x+game.width-155,game.camera.y+game.height-240,{fill:"#abcdef"});
+	if(npc.name=="mailBox") {
+		npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,"PlayerPortrait");
+		npcPortrait.smoothed=false;
+		npcPortrait.scale.setTo(5,5);
+		npcName.text=playerName;
+	}
+	else{
+		npcPortrait=game.add.sprite(portraitBox.centerX*.975,portraitBox.centerY*.95,npc.name);
+		npcPortrait.frame=0;
+		npcPortrait.smoothed=false;
+		npcPortrait.scale.setTo(5,5);
+		npcName.text=npc.name;
+	} 
 
-	dialogue= game.add.text(game.camera.x+75,game.camera.y+game.height-175,{fill: "#abcdef"});
-	dialogue.text=dialogueString;
+	if(npcName.text==playerName)npcPortrait.scale.setTo(3,3);
+
+	dialogue= game.add.text(game.camera.x+100,game.camera.y+game.height-175,{fill: "#abcdef"});
+	dialogue.text=dialogueString;0
 	dialogueTimmer=5;
 	isDialogueUp=true;
 	npc.dialogueCount++;

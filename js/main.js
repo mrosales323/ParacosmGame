@@ -30,6 +30,8 @@ var npc2;
 var npc3;
 var npc4;
 var mailBox;
+var house;
+
 
 var trees;
 
@@ -52,7 +54,7 @@ var leaf;
 //true if mail is open so the player cannot move
 //false if mail is not open so the player can move
 var main=function(game){
-console.log("Playing my awesome game:");
+console.log("Playing my awesome game I GUESS:");
 };
 
 main.prototype.preload=function(){
@@ -95,9 +97,10 @@ main.prototype.createAllNPCS=function(){
     ]
 
 ];
+	npc1.scale.setTo(3,3);
 	game.add.existing(npc1);
 
-	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.8,"Billy");
+	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.1,"Billy");
 	this.game.physics.arcade.enable(npc2);
 	npc2.enableBody=true;
 	npc2.body.collideWorldBounds=true;
@@ -108,7 +111,7 @@ main.prototype.createAllNPCS=function(){
     npc2.events.onInputDown.add(clickToTalk, this);
 	game.add.existing(npc2);
 
-	npc3= new NPC3(game.world.centerX*0.5,game.world.centerY*1.8,"Alex");
+	npc3= new NPC3(game.world.centerX*0.5,game.world.centerY*1.1,"Alex");
 	this.game.physics.arcade.enable(npc3);
 	npc3.enableBody=true;
 	npc3.body.enable=true;
@@ -118,6 +121,7 @@ main.prototype.createAllNPCS=function(){
 	npc3.inputEnabled = true;
     npc3.events.onInputDown.add(clickToTalk, this);
 	game.add.existing(npc3);
+	npc3.scale.setTo(2.5,2.5);
 
 	npc4= new NPC4(game.world.centerX*1.3,game.world.centerY*0.3,"Helen");
 	this.game.physics.arcade.enable(npc4);
@@ -139,11 +143,9 @@ main.prototype.createAllNPCS=function(){
 	mailBox.smoothed=false;
 	mailBox.inputEnabled = true;
     mailBox.events.onInputDown.add(clickToTalk, this);
-    mailBox.createEx();
 	game.add.existing(mailBox);
-
-
-console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK");
+	mailBox.createEx();
+	console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK SOME THINGS");
 }
 
 main.prototype.createCharacter=function(){
@@ -154,8 +156,13 @@ main.prototype.createCharacter=function(){
 	character.body.onCollide = new Phaser.Signal();
 	character.body.onCollide.add(character.talk, this);
 	game.add.existing(character);	
-	character.scale.setTo(.4,.4);
-	character.body.setSize(character.width/.4,character.height/.7,0,character.height*1.1);
+	character.scale.setTo(2,2);
+	//character.body.setSize(character.width/.4,character.height/.7,0,character.height*1.1);
+	character.animations.add("IdleRight",[0,1],1,true);
+    character.animations.add("rightWalk",[2,3],10,true);
+    character.animations.add("leftWalk",[4,5],10,true);
+    character.animations.add("IdleLeft",[6,7],1,true);
+    character.smoothed=false;
 }
 
 main.prototype.createTrees=function(){
@@ -211,6 +218,16 @@ main.prototype.leafs=function(){
 	_emitter.makeParticles('leaf');
 
 }
+
+main.prototype.loadTiles=function(){
+		house=this.game.add.sprite(game.world.centerX,game.world.centerY*.2,"Building");
+		house.scale.setTo(3,3);
+		this.game.physics.arcade.enable(house);
+		house.enableBody=true;
+		house.body.collideWorldBounds=true;
+		house.body.immovable=true;
+}
+
 main.prototype.create=function(){
 	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -218,6 +235,7 @@ main.prototype.create=function(){
 	
 	this.createTrees();
 	this.createAllNPCS();
+	this.loadTiles();
 	this.createCharacter();
 	game.camera.follow(character);
 	game.time.events.loop(Phaser.Timer.SECOND, dialogueCountDown, this);
