@@ -8,6 +8,7 @@ function preload(){
 	this.game.load.spritesheet('Sandy','assets/img/Characters/npc1.png',19,18,6);
 	this.game.load.image('Billy','assets/img/Characters/npc2.png');
 	this.game.load.spritesheet('Alex','assets/img/Characters/npc3.png',13,21,6);
+	this.game.load.spritesheet('Mayor','assets/img/Characters/npc3.png',13,21,6);
 	this.game.load.image('Helen','assets/img/Characters/npc4.png');
 
 	this.game.load.image("tier1Button","assets/img/Buttons/buttonTier1.png");
@@ -47,6 +48,7 @@ function preload(){
 function create(){
 	game.add.plugin(PhaserInput.Plugin);
 	console.log("Booting up v5");
+	game.state.add("DayZero",DayZero);
 	game.state.add("main",main);
 	game.state.add("DayTwo",DayTwo);
 	game.state.add("DayThree",DayThree);

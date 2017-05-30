@@ -33,12 +33,13 @@ MainMenu.prototype.create=function(){
   var PlayButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: PlayButton.width, align: "center" };
   PlayButtonText = game.add.text(PlayButton.centerX*.95, PlayButton.centerY*.95, "Play", PlayButtonStyle);
   
+  /*
   OptionsButton = game.add.sprite(game.world.centerX, game.world.centerY*1.25, 'BlankButton');
   OptionsButton.anchor.x=0.5;
   OptionsButton.anchor.y=0.5;
   var OptionsButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: OptionsButton.width, align: "center" };
   OptionsButtonText = game.add.text(OptionsButton.centerX*.925, OptionsButton.centerY*.95, "Options", OptionsButtonStyle);
-
+  */
   
   QuitButton = game.add.sprite(game.world.centerX, game.world.centerY*1.5, 'BlankButton');
   QuitButton.anchor.x=0.5;

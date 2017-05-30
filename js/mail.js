@@ -112,6 +112,10 @@ Mail.prototype.addToGroup=function(object){
 Mail.prototype.setKeys=function(stage){
 	//Use this area to set which npc's that day get mail.
 	switch(stage){
+		case 0:
+			console.log("OK, here we go.")
+			mailGroup.children[0].mailKey="Mayor";
+			break;
 		case 1:
 			console.log("OK, here we go.")
 			mailGroup.children[0].mailKey="Alex";
@@ -160,6 +164,11 @@ Mail.prototype.setKeys=function(stage){
 Mail.prototype.setUp=function(stage){
 	//change these values to set how many mail pieces need to be delivered for the day.
 	switch(stage){
+		case 0:
+			for(var i=1;i<mailGroup.length;i++){
+				mail.giveLetter(i);
+			}
+			break;
 		case 1:
 			for(var i=3;i<mailGroup.length;i++){
 				mail.giveLetter(i);

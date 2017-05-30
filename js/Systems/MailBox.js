@@ -53,6 +53,9 @@ MailBox.prototype.talk=function(){
 		EXMarkSprite.kill();
 		//this.kill();
 		switch(stage){
+			case 0:
+				game.state.start("DaySelectionMenu");
+				break;
 			case 1:
 				DayTwoButtonEnabled=true;
 				game.state.start("DaySelectionMenu");

@@ -1,66 +1,14 @@
-/*
-Art is 2.5-D style. Keep that in mind when programming.
+var tutorialMayor;
+var showtextOnce;
 
-
-Main character is a mail man when starting off. Maybe a mine worker by the end.
-RPG-walking simulator?
-
-Mechanics:  walking
-				-walking will be free movement style based.
-			
-			interacting, talking with people, dialogue choices.
-
-Ideas: Rally you cna go to for possible story ending or just going home. Possibly affect change of story.
-		-people enter your mail office in government attire and you aren't sure what they are doing. Possible beginning story arc.
-
-		Phase 1: Just go deliver a simple package and talk to your neighbors. Pretty simple.
-*/
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-var counter=0;
-var text;
-
-var character;
-var npc1;
-var npc2;
-var npc3;
-var npc4;
-var mailBox;
-var house;
-
-
-var trees;
-
-var tileSprite;
-
-var worldWidth=1920;
-var worldHeight=1080;
-
-var BGM;
-//used to flipflop the mail state
-var flipflop;
-
-var mail;
-
-var mailMenu;
-
-var cursor;
-
-var leaf;
-//true if mail is open so the player cannot move
-//false if mail is not open so the player can move
-var main=function(game){
-console.log("Playing my awesome game I GUESS:");
+var DayZero=function(game){
+console.log("Starting the tutorial.");
 };
 
-main.prototype.preload=function(){
+DayZero.prototype.preload=function(){
 
 }
-main.prototype.mailBag=function(){
+DayZero.prototype.mailBag=function(){
 	//generate a mailbag
 	mail=new Mail(game,'mailBag');
 	console.log("mailbag");
@@ -68,19 +16,19 @@ main.prototype.mailBag=function(){
 	
 }
 
-main.prototype.createAllNPCS=function(){
-	npc1= new NPC1(game.world.centerX*1.3,game.world.centerY*1.3,"Sandy");
-	this.game.physics.arcade.enable(npc1);
-	npc1.enableBody=true;
-	npc1.body.collideWorldBounds=true;
-	npc1.body.immovable=true;
-	npc1.body.enable=true;
-	npc1.dialogueIndex=dayNumber;
-	npc1.inputEnabled = true;
-    npc1.events.onInputDown.add(clickToTalk, this);
+DayZero.prototype.createAllNPCS=function(){
+	tutorialMayor= new TutorialMayor(game.world.centerX*1,game.world.centerY*1,"Mayor");
+	this.game.physics.arcade.enable(tutorialMayor);
+	tutorialMayor.enableBody=true;
+	tutorialMayor.body.collideWorldBounds=true;
+	tutorialMayor.body.immovable=true;
+	tutorialMayor.body.enable=true;
+	tutorialMayor.dialogueIndex=dayNumber;
+	tutorialMayor.inputEnabled = true;
+    tutorialMayor.events.onInputDown.add(clickToTalk, this);
 
 //has to be done for npcs that use variables that are determined after initalization of the game. Otherwise the variables will be undefined.
-	npc1.sentences=[
+	tutorialMayor.sentences=[
     //first numeric value represents the number of strings in that dialogue list.
     //[0,x]
     /*
@@ -91,50 +39,18 @@ main.prototype.createAllNPCS=function(){
     ],
     */
     //[1,x]
-    [2,
-    "Oh hey there "+playerName+"....",
-    "Man there is too much to read in school. Is that a letter to me from Jenny?!"
+   	[2,
+    "Ahh "+playerName+" are you here to deliver my mail to me?\nCome here and let me see it.",
+    "Hmm more junk it seems. This mayor business is hard work.\nAnyways good work today, I'll see you tomorrow."
     ]
 
 ];
-	npc1.scale.setTo(3,3);
-	game.add.existing(npc1);
+	tutorialMayor.scale.setTo(2.5,2.5);
+	tutorialMayor.smoothed=false;
+	tutorialMayor.frame=0;
+	game.add.existing(tutorialMayor);
 
-	npc2= new NPC2(game.world.centerX*1.5,game.world.centerY*1.1,"Billy");
-	this.game.physics.arcade.enable(npc2);
-	npc2.enableBody=true;
-	npc2.body.collideWorldBounds=true;
-	npc2.body.immovable=true;
-	npc2.body.enable=true;
-	npc2.dialogueIndex=dayNumber;
-	npc2.inputEnabled = true;
-    npc2.events.onInputDown.add(clickToTalk, this);
-	game.add.existing(npc2);
-
-	npc3= new NPC3(game.world.centerX*0.5,game.world.centerY*1.1,"Alex");
-	this.game.physics.arcade.enable(npc3);
-	npc3.enableBody=true;
-	npc3.body.enable=true;
-	npc3.body.collideWorldBounds=true;
-	npc3.body.immovable=true;
-	npc3.dialogueIndex=dayNumber;
-	npc3.inputEnabled = true;
-    npc3.events.onInputDown.add(clickToTalk, this);
-	game.add.existing(npc3);
-	npc3.scale.setTo(2.5,2.5);
-
-	npc4= new NPC4(game.world.centerX*1.3,game.world.centerY*0.3,"Helen");
-	this.game.physics.arcade.enable(npc4);
-	npc4.enableBody=true;
-	npc4.body.collideWorldBounds=true;
-	npc4.body.immovable=true;
-	//npc4.body.enable=true;
-	npc4.dialogueIndex=dayNumber;
-	npc4.inputEnabled = true;
-    npc4.events.onInputDown.add(clickToTalk, this);
-	game.add.existing(npc4);
-
-	mailBox= new MailBox(game.world.centerX*1.1,game.world.centerY*0.7,"MailBox");
+	mailBox= new MailBox(game.world.centerX*1.1,game.world.centerY*1.4,"MailBox");
 	this.game.physics.arcade.enable(mailBox);
 	mailBox.enableBody=true;
 	mailBox.body.collideWorldBounds=true;
@@ -148,7 +64,7 @@ main.prototype.createAllNPCS=function(){
 	console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK SOME THINGS");
 }
 
-main.prototype.createCharacter=function(){
+DayZero.prototype.createCharacter=function(){
 	character= new player(game.world.centerX,game.world.centerY);
 	this.game.physics.arcade.enable(character);
 	character.enableBody=true;
@@ -165,7 +81,7 @@ main.prototype.createCharacter=function(){
     character.smoothed=false;
 }
 
-main.prototype.createTrees=function(){
+DayZero.prototype.createTrees=function(){
 	trees= game.add.group();
 	trees=game.add.physicsGroup();
 	trees.immovable=true;
@@ -213,13 +129,13 @@ main.prototype.createTrees=function(){
 	console.log("OAK AND PINE MAKE NO RESEIN.")
 }
 var _emitter;
-main.prototype.leafs=function(){
+DayZero.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
 
 }
 
-main.prototype.loadTiles=function(){
+DayZero.prototype.loadTiles=function(){
 		house=this.game.add.sprite(game.world.centerX,game.world.centerY*.2,"Building");
 		house.scale.setTo(3,3);
 		this.game.physics.arcade.enable(house);
@@ -228,11 +144,11 @@ main.prototype.loadTiles=function(){
 		house.body.immovable=true;
 }
 
-main.prototype.create=function(){
+DayZero.prototype.create=function(){
 	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
-	game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
-	
+	//game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
+	showtextOnce=false;
 	this.createTrees();
 	this.createAllNPCS();
 	this.loadTiles();
@@ -278,20 +194,21 @@ main.prototype.create=function(){
 	//cursor.anchor(0.5,0.5);
 	cursor.anchor.setTo(0,0);
 	cursor.smoothed=false;
-
-	
-
+	clickToTalk(tutorialMayor);
 }
 //this.game.stage.scale.refresh();
 
 
-main.prototype.listener=function(){
+DayZero.prototype.listener=function(){
 	counter++;
 //text.text="You clicked "+ counter + " times!";
 }
 
-main.prototype.update=function(){
-
+DayZero.prototype.update=function(){
+	if(isDialogueUp==false && showtextOnce==false){
+		tutorialDialogueSetUp("Click an NPC to talk to them",null);
+		showtextOnce=true;
+	} 
 	cursor.x=game.input.x+game.camera.x;
 	cursor.y=game.input.y+game.camera.y;
 	//game.physics.arcade.moveToPointer(cursor, 800);
@@ -327,7 +244,7 @@ main.prototype.update=function(){
 	}
 }
 
-main.prototype.render=function(){
+DayZero.prototype.render=function(){
    // game.debug.bodyInfo(character, 32, 32);
 
    // game.debug.body(character);

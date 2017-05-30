@@ -63,6 +63,7 @@ nameSelectionMenu.prototype.actionOnClick=function(){
 if(namefield.value.toString()=="") return;
 playerName=namefield.value.toString();
 console.log(playerName);
-game.state.start("DaySelectionMenu");
+stage=0;
+game.state.start("DayZero");
 
 }
