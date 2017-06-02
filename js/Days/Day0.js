@@ -10,11 +10,11 @@ DayZero.prototype.preload=function(){
 }
 DayZero.prototype.mailBag=function(){
 	//generate a mailbag
-	if(!mail){
+	//if(!mail){
 		mail=new Mail(game,'mailBag');
 		console.log("mailbag");
 		game.add.existing(mail);
-	}
+	//}
 
 	
 }

@@ -5,11 +5,11 @@ console.log("Playing my awesome game:");
 DayThree.prototype.preload=function(){
 
 }
-DayThree.prototype.mailBag=function(){
-	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+DayThree.prototype.mail3Bag=function(){
+	//generate a mail3bag
+	mail3=new mail3(game,'mailBag');
+	console.log("mail3bag");
+	game.add.existing(mail3);
 	
 }
 
@@ -185,20 +185,20 @@ DayThree.prototype.create=function(){
 
 	this.leafs();
     console.log("sfsdjkhgkje");
-	this.mailBag();
-	mail.addToGroup();
-	mail.makeInvisible();
+	this.mail3Bag();
+	mail3.addToGroup(stage);
+	mail3.makeInvisible();
 	for(var i=0;i<10;i++){
-		mail.addToGroup();
+		mail3.addToGroup(stage);
 	}
-	mail.setKeys(stage);
+	mail3.setKeys(stage);
 
 
-	mail.setUp(stage);
+	mail3.setUp(stage);
 
 
-	//default to mail not being open
-	mailMenu=false;
+	//default to mail3 not being open
+	mail3Menu=false;
 	cursor= game.add.sprite(0,0,"cursor");
 	cursor.scale.setTo(5,5);
 	//cursor.anchor(0.5,0.5);
@@ -230,18 +230,18 @@ DayThree.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
 		if(!flipflop){
 			flipflop=true;
-			if(mail.visible==true){
-				mail.makeInvisible();
-				mail.killLetter();
+			if(mail3.visible==true){
+				mail3.makeInvisible();
+				mail3.killLetter();
 				canPlayerMove=true;
-			}else if(mail.visible==false){
-				mail.makeVisible();
+			}else if(mail3.visible==false){
+				mail3.makeVisible();
 				canPlayerMove=false;
 
 
-					for (var i = mailGroup.length - 1; i >= 0; i--) {
+					for (var i = mail3Group.length - 1; i >= 0; i--) {
 						console.log("I HAVE LOTS OF MAIL " + i);
-						console.log(mailGroup.children[i].mailKey);
+						console.log(mail3Group.children[i].mail3Key);
 					}
 			}
 		}

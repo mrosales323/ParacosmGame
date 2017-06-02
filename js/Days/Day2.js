@@ -2,7 +2,7 @@
 Art is 2.5-D style. Keep that in mind when programming.
 
 
-Main character is a mail man when starting off. Maybe a mine worker by the end.
+Main character is a mail2 man when starting off. Maybe a mine worker by the end.
 RPG-walking simulator?
 
 Mechanics:  walking
@@ -11,12 +11,12 @@ Mechanics:  walking
 			interacting, talking with people, dialogue choices.
 
 Ideas: Rally you cna go to for possible story ending or just going home. Possibly affect change of story.
-		-people enter your mail office in government attire and you aren't sure what they are doing. Possible beginning story arc.
+		-people enter your mail2 office in government attire and you aren't sure what they are doing. Possible beginning story arc.
 
 		Phase 1: Just go deliver a simple package and talk to your neighbors. Pretty simple.
 */
-//true if mail is open so the player cannot move
-//false if mail is not open so the player can move
+//true if mail2 is open so the player cannot move
+//false if mail2 is not open so the player can move
 var DayTwo=function(game){
 console.log("Playing my awesome game:");
 };
@@ -24,11 +24,11 @@ console.log("Playing my awesome game:");
 DayTwo.prototype.preload=function(){
 
 }
-DayTwo.prototype.mailBag=function(){
-	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+DayTwo.prototype.mail2Bag=function(){
+	//generate a mail2bag
+	mail2=new mail2(game,'mailBag');
+	console.log("mail2bag");
+	game.add.existing(mail2);
 	
 }
 
@@ -206,20 +206,20 @@ DayTwo.prototype.create=function(){
 
 	//game.add.existing(cursor);
     console.log("sfsdjkhgkje");
-	this.mailBag();
-	mail.addToGroup();
-	mail.makeInvisible();
-	for(var i=0;i<10;i++){
-		mail.addToGroup();
+	this.mail2Bag();
+	mail2.addToGroup(stage);
+	mail2.makeInvisible();
+	for(var i=0;i<11;i++){
+		mail2.addToGroup(stage);
 	}
-	mail.setKeys(stage);
+	mail2.setKeys(stage);
 
 
-	mail.setUp(stage);
+	mail2.setUp(stage);
 
 
-	//default to mail not being open
-	mailMenu=false;
+	//default to mail2 not being open
+	mail2Menu=false;
 	cursor= game.add.sprite(0,0,"cursor");
 	cursor.scale.setTo(5,5);
 	//cursor.anchor(0.5,0.5);
@@ -251,18 +251,18 @@ DayTwo.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
 		if(!flipflop){
 			flipflop=true;
-			if(mail.visible==true){
-				mail.makeInvisible();
-				mail.killLetter();
+			if(mail2.visible==true){
+				mail2.makeInvisible();
+				mail2.killLetter();
 				canPlayerMove=true;
-			}else if(mail.visible==false){
-				mail.makeVisible();
+			}else if(mail2.visible==false){
+				mail2.makeVisible();
 				canPlayerMove=false;
 
 
-					for (var i = mailGroup.length - 1; i >= 0; i--) {
+					for (var i = mail2Group.length - 1; i >= 0; i--) {
 						console.log("I HAVE LOTS OF MAIL " + i);
-						console.log(mailGroup.children[i].mailKey);
+						console.log(mail2Group.children[i].mail2Key);
 					}
 			}
 		}

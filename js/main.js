@@ -2,7 +2,7 @@
 Art is 2.5-D style. Keep that in mind when programming.
 
 
-Main character is a mail man when starting off. Maybe a mine worker by the end.
+Main character is a mail1 man when starting off. Maybe a mine worker by the end.
 RPG-walking simulator?
 
 Mechanics:  walking
@@ -11,7 +11,7 @@ Mechanics:  walking
 			interacting, talking with people, dialogue choices.
 
 Ideas: Rally you cna go to for possible story ending or just going home. Possibly affect change of story.
-		-people enter your mail office in government attire and you aren't sure what they are doing. Possible beginning story arc.
+		-people enter your mail1 office in government attire and you aren't sure what they are doing. Possible beginning story arc.
 
 		Phase 1: Just go deliver a simple package and talk to your neighbors. Pretty simple.
 */
@@ -29,7 +29,7 @@ var npc1;
 var npc2;
 var npc3;
 var npc4;
-var mailBox;
+var mail1Box;
 var house;
 
 
@@ -41,18 +41,18 @@ var worldWidth=1920;
 var worldHeight=1080;
 
 var BGM;
-//used to flipflop the mail state
+//used to flipflop the mail1 state
 var flipflop;
 
-var mail;
+var mail1;
 
-var mailMenu;
+var mail1Menu;
 
 var cursor;
 
 var leaf;
-//true if mail is open so the player cannot move
-//false if mail is not open so the player can move
+//true if mail1 is open so the player cannot move
+//false if mail1 is not open so the player can move
 var main=function(game){
 console.log("Playing my awesome game I GUESS:");
 };
@@ -60,11 +60,11 @@ console.log("Playing my awesome game I GUESS:");
 main.prototype.preload=function(){
 
 }
-main.prototype.mailBag=function(){
-	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+main.prototype.mail1Bag=function(){
+	//generate a mail1bag
+	mail1=new mail1(game,'mailBag');
+	console.log("mail1bag");
+	game.add.existing(mail1);
 	
 }
 
@@ -261,22 +261,22 @@ main.prototype.create=function(){
 	//game.add.existing(cursor);
 
     console.log("Day1");
-	this.mailBag();
+	this.mail1Bag();
 	//reset them
-	mail.resetBag();
-	mail.addToGroup(stage);
-	mail.makeInvisible();
+	//mail1.resetBag();
+	mail1.addToGroup(stage);
+	mail1.makeInvisible();
 	for(var i=0;i<11;i++){
-		mail.addToGroup(stage);
+		mail1.addToGroup(stage);
 	}
-	mail.setKeys(stage);
+	mail1.setKeys(stage);
 
 
-	mail.setUp(stage);
+	mail1.setUp(stage);
 
 
-	//default to mail not being open
-	mailMenu=false;
+	//default to mail1 not being open
+	mail1Menu=false;
 	cursor= game.add.sprite(0,0,"cursor");
 	cursor.scale.setTo(5,5);
 	//cursor.anchor(0.5,0.5);
@@ -310,19 +310,19 @@ main.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
 		if(!flipflop){
 			flipflop=true;
-			if(mail.visible==true){
-				mail.makeInvisible();
-				mail.killLetter();
+			if(mail1.visible==true){
+				mail1.makeInvisible();
+				mail1.killLetter();
 				canPlayerMove=true;
-			}else if(mail.visible==false){
-				console.log("make the mail visible yo");
-				mail.makeVisible();
+			}else if(mail1.visible==false){
+				console.log("make the mail1 visible yo");
+				mail1.makeVisible();
 				canPlayerMove=false;
 
 
-					for (var i = mailGroup.length - 1; i >= 0; i--) {
-						console.log("I HAVE LOTS OF MAIL " + i);
-						console.log(mailGroup.children[i].mailKey);
+					for (var i = mail1Group.length - 1; i >= 0; i--) {
+						console.log("I HAVE LOTS OF mail1 " + i);
+						console.log(mail1Group.children[i].mail1Key);
 					}
 			}
 		}

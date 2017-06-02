@@ -5,11 +5,11 @@ console.log("Playing my awesome game:");
 DaySix.prototype.preload=function(){
 
 }
-DaySix.prototype.mailBag=function(){
-	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+DaySix.prototype.mail6Bag=function(){
+	//generate a mail6bag
+	mail6=new mail6(game,'mailBag');
+	console.log("mail6bag");
+	game.add.existing(mail6);
 	
 }
 
@@ -186,20 +186,20 @@ DaySix.prototype.create=function(){
 	this.leafs();
 
     console.log("sfsdjkhgkje");
-	this.mailBag();
-	mail.addToGroup();
-	mail.makeInvisible();
-	for(var i=0;i<10;i++){
-		mail.addToGroup();
+	this.mail6Bag();
+	mail6.addToGroup(stage);
+	mail6.makeInvisible();
+	for(var i=0;i<11;i++){
+		mail6.addToGroup(stage);
 	}
-	mail.setKeys(stage);
+	mail6.setKeys(stage);
 
 
-	mail.setUp(stage);
+	mail6.setUp(stage);
 
 
-	//default to mail not being open
-	mailMenu=false;
+	//default to mail6 not being open
+	mail6Menu=false;
 	cursor= game.add.sprite(0,0,"cursor");
 	cursor.scale.setTo(5,5);
 	//cursor.anchor(0.5,0.5);
@@ -231,18 +231,18 @@ DaySix.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
 		if(!flipflop){
 			flipflop=true;
-			if(mail.visible==true){
-				mail.makeInvisible();
-				mail.killLetter();
+			if(mail6.visible==true){
+				mail6.makeInvisible();
+				mail6.killLetter();
 				canPlayerMove=true;
-			}else if(mail.visible==false){
-				mail.makeVisible();
+			}else if(mail6.visible==false){
+				mail6.makeVisible();
 				canPlayerMove=false;
 
 
-					for (var i = mailGroup.length - 1; i >= 0; i--) {
+					for (var i = mail6Group.length - 1; i >= 0; i--) {
 						console.log("I HAVE LOTS OF MAIL " + i);
-						console.log(mailGroup.children[i].mailKey);
+						console.log(mail6Group.children[i].mail6Key);
 					}
 			}
 		}

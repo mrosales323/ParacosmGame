@@ -5,11 +5,11 @@ console.log("Playing my awesome game:");
 DayFour.prototype.preload=function(){
 
 }
-DayFour.prototype.mailBag=function(){
-	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+DayFour.prototype.mail4Bag=function(){
+	//generate a mail4bag
+	mail4=new mail4(game,'mailBag');
+	console.log("mail4bag");
+	game.add.existing(mail4);
 	
 }
 
@@ -154,6 +154,14 @@ var _emitter;
 DayFour.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
+		_emitter.start(false, 14000, 100);
+	_emitter.x=game.world.centerX;
+	_emitter.y=0;
+	_emitter.width=game.world.width;
+	_emitter.maxParticleScale = 3;
+    _emitter.minParticleScale = 2;
+    _emitter.setYSpeed(10, 20);
+
 
 }
 DayFour.prototype.create=function(){
@@ -177,29 +185,21 @@ DayFour.prototype.create=function(){
 
 	this.leafs();
 
-	//game.add.existing(cursor);
-	_emitter.start(false, 14000, 20);
-	_emitter.x=game.world.centerX;
-	_emitter.y=0;
-	_emitter.width=game.world.width;
-	_emitter.maxParticleScale = 3;
-    _emitter.minParticleScale = 2;
-    _emitter.setYSpeed(20, 100);
     console.log("sfsdjkhgkje");
-	this.mailBag();
-	mail.addToGroup();
-	mail.makeInvisible();
-	for(var i=0;i<10;i++){
-		mail.addToGroup();
+	this.mail4Bag();
+	mail4.addToGroup(stage);
+	mail4.makeInvisible();
+	for(var i=0;i<11;i++){
+		mail4.addToGroup(stage);
 	}
-	mail.setKeys(stage);
+	mail4.setKeys(stage);
 
 
-	mail.setUp(stage);
+	mail4.setUp(stage);
 
 
-	//default to mail not being open
-	mailMenu=false;
+	//default to mail4 not being open
+	mail4Menu=false;
 	cursor= game.add.sprite(0,0,"cursor");
 	cursor.scale.setTo(5,5);
 	//cursor.anchor(0.5,0.5);
@@ -231,18 +231,18 @@ DayFour.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.M)){
 		if(!flipflop){
 			flipflop=true;
-			if(mail.visible==true){
-				mail.makeInvisible();
-				mail.killLetter();
+			if(mail4.visible==true){
+				mail4.makeInvisible();
+				mail4.killLetter();
 				canPlayerMove=true;
-			}else if(mail.visible==false){
-				mail.makeVisible();
+			}else if(mail4.visible==false){
+				mail4.makeVisible();
 				canPlayerMove=false;
 
 
-					for (var i = mailGroup.length - 1; i >= 0; i--) {
+					for (var i = mail4Group.length - 1; i >= 0; i--) {
 						console.log("I HAVE LOTS OF MAIL " + i);
-						console.log(mailGroup.children[i].mailKey);
+						console.log(mail4Group.children[i].mail4Key);
 					}
 			}
 		}
