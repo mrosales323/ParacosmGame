@@ -216,6 +216,14 @@ var _emitter;
 main.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
+		_emitter.start(false, 14000, 100);
+	_emitter.x=game.world.centerX;
+	_emitter.y=0;
+	_emitter.width=game.world.width;
+	_emitter.maxParticleScale = 3;
+    _emitter.minParticleScale = 2;
+    _emitter.setYSpeed(10, 20);
+
 
 }
 
@@ -251,19 +259,15 @@ main.prototype.create=function(){
 	this.leafs();
 
 	//game.add.existing(cursor);
-	_emitter.start(false, 14000, 20);
-	_emitter.x=game.world.centerX;
-	_emitter.y=0;
-	_emitter.width=game.world.width;
-	_emitter.maxParticleScale = 3;
-    _emitter.minParticleScale = 2;
-    _emitter.setYSpeed(20, 100);
-    console.log("sfsdjkhgkje");
+
+    console.log("Day1");
 	this.mailBag();
-	mail.addToGroup();
+	//reset them
+	mail.resetBag();
+	mail.addToGroup(stage);
 	mail.makeInvisible();
-	for(var i=0;i<10;i++){
-		mail.addToGroup();
+	for(var i=0;i<11;i++){
+		mail.addToGroup(stage);
 	}
 	mail.setKeys(stage);
 
@@ -311,6 +315,7 @@ main.prototype.update=function(){
 				mail.killLetter();
 				canPlayerMove=true;
 			}else if(mail.visible==false){
+				console.log("make the mail visible yo");
 				mail.makeVisible();
 				canPlayerMove=false;
 

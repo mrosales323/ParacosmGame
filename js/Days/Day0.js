@@ -10,9 +10,12 @@ DayZero.prototype.preload=function(){
 }
 DayZero.prototype.mailBag=function(){
 	//generate a mailbag
-	mail=new Mail(game,'mailBag');
-	console.log("mailbag");
-	game.add.existing(mail);
+	if(!mail){
+		mail=new Mail(game,'mailBag');
+		console.log("mailbag");
+		game.add.existing(mail);
+	}
+
 	
 }
 
@@ -132,6 +135,14 @@ var _emitter;
 DayZero.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
+		_emitter.start(false, 14000, 100);
+	_emitter.x=game.world.centerX;
+	_emitter.y=0;
+	_emitter.width=game.world.width;
+	_emitter.maxParticleScale = 3;
+    _emitter.minParticleScale = 2;
+    _emitter.setYSpeed(10, 20);
+
 
 }
 
@@ -167,19 +178,13 @@ DayZero.prototype.create=function(){
 	this.leafs();
 
 	//game.add.existing(cursor);
-	_emitter.start(false, 14000, 20);
-	_emitter.x=game.world.centerX;
-	_emitter.y=0;
-	_emitter.width=game.world.width;
-	_emitter.maxParticleScale = 3;
-    _emitter.minParticleScale = 2;
-    _emitter.setYSpeed(20, 100);
     console.log("sfsdjkhgkje");
 	this.mailBag();
-	mail.addToGroup();
+	mail.deleteFromGroup();
+	mail.addToGroup(stage);
 	mail.makeInvisible();
-	for(var i=0;i<10;i++){
-		mail.addToGroup();
+	for(var i=0;i<11;i++){
+		mail.addToGroup(stage);
 	}
 	mail.setKeys(stage);
 
