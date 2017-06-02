@@ -154,6 +154,14 @@ var _emitter;
 DaySix.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
+		_emitter.start(false, 14000, 100);
+	_emitter.x=game.world.centerX;
+	_emitter.y=0;
+	_emitter.width=game.world.width;
+	_emitter.maxParticleScale = 3;
+    _emitter.minParticleScale = 2;
+    _emitter.setYSpeed(10, 20);
+
 
 }
 DaySix.prototype.create=function(){
@@ -177,14 +185,6 @@ DaySix.prototype.create=function(){
 
 	this.leafs();
 
-	//game.add.existing(cursor);
-	_emitter.start(false, 14000, 20);
-	_emitter.x=game.world.centerX;
-	_emitter.y=0;
-	_emitter.width=game.world.width;
-	_emitter.maxParticleScale = 3;
-    _emitter.minParticleScale = 2;
-    _emitter.setYSpeed(20, 100);
     console.log("sfsdjkhgkje");
 	this.mailBag();
 	mail.addToGroup();

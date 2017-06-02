@@ -38,7 +38,8 @@ Mail.prototype.makeGrid=function(){
 		}
 	}
 }
-Mail.prototype.addToGroup=function(object){
+Mail.prototype.addToGroup=function(stage){
+	console.log("is this even being used");
 	if(!mailGroup){
 		mailGroup=game.add.group();
 	}
@@ -47,6 +48,8 @@ Mail.prototype.addToGroup=function(object){
 	fuckYou.scale.setTo(8,8);
 	fuckYou.anchor.setTo(.5,.5);
 	fuckYou.smoothed=false;
+	//fuckYou.visible=false;
+	console.log(stage+ "is the sdfgdfgdfhdfhdfhdfh stage");
 	fuckYou.events.onInputDown.add(
 		function(){
 			//console.log("clicked");
@@ -61,7 +64,7 @@ Mail.prototype.addToGroup=function(object){
 					message.kill();
 				}
 			}
-
+			console.log("making the letter");
 			letter=game.add.sprite(game.camera.x+game.camera.width/2,game.camera.y+game.camera.height/2,'letter');
 			letter.smoothed=false;
 			letter.anchor.setTo(.5,.5);
@@ -69,6 +72,7 @@ Mail.prototype.addToGroup=function(object){
 			game.add.existing(letter);
 			letter.mailKey="key";
 			var printText=function(string){
+				console.log("tater tots");
 				var style = { font: "16px Arial", fill: "#000", 
 		        align: "left", // the alignment of the text is independent of the bounds, try changing to 'center' or 'right'
 		        boundsAlignH: "left", 
@@ -77,8 +81,36 @@ Mail.prototype.addToGroup=function(object){
         		message=game.add.text(game.camera.x+game.camera.width/2,game.camera.y+game.camera.height/2,string,style);
 				message.setTextBounds(0, 0, 300, 568);
 				message.anchor.setTo(.5,.5);
-			}
+				if(message){
+					message.visible=true;
+				}
+			}					
+			//console.log("1010101010101010101010101-----------");
+			console.log("STAGE: "+stage);
 			switch(stage){
+				case 0:
+					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[0].mailKey);
+						printText("letter1");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+150&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[1].mailKey);
+						printText("This letter works at least");
+						console.log("Camera: "+game.camera.x+game.camera.width/2-(375));
+						console.log(fuckYou.x+", "+fuckYou.y);
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(2*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[2].mailKey);
+						printText("Letter3");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(3*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(4*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(5*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(0*150)&&fuckYou.y==game.camera.y+game.camera.height/2+125){
+						printText("killme");
+					}
+
+					break;
 				case 1:
 					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
 						//console.log(mailGroup.children[0].mailKey);
@@ -101,7 +133,30 @@ Mail.prototype.addToGroup=function(object){
 						printText("killme");
 					}
 					break;
+				case 2:
+					if(fuckYou.x==game.camera.x+game.camera.width/2-(375)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[0].mailKey);
+						printText("LETTER1\n\nDear Josh,\n    I have figured out how to make text work in game for our mail system."+
+							"Its actually quite a simple system that will read the day and display the required text"+
+							"in a bounded text box.\n\n\nLove, Cole");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+150&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[1].mailKey);
+						printText("LETTER2");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(2*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						//console.log(mailGroup.children[2].mailKey);
+						printText("Letter3");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(3*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(4*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(5*150)&&fuckYou.y==game.camera.y+game.camera.height/2-150){
+						printText("randomText");
+					}else if(fuckYou.x==game.camera.x+game.camera.width/2-(375)+(0*150)&&fuckYou.y==game.camera.y+game.camera.height/2+125){
+						printText("killme");
+					}
+					break;
 			}
+			console.log("after switch");
 
 		}, this);
 	//Initialize the mail keys for the stage here.
@@ -163,6 +218,15 @@ Mail.prototype.setKeys=function(stage){
 
 Mail.prototype.setUp=function(stage){
 	//change these values to set how many mail pieces need to be delivered for the day.
+	//look through and reenable everything
+	for(var i=0;i<mailGroup.length;i++){
+		mailGroup.children[i].visible=true;
+		if(message){
+			console.log("message exists");
+			message.visible=true;
+		}
+		//letter.visible=true;
+	}
 	switch(stage){
 		case 0:
 			for(var i=1;i<mailGroup.length;i++){
@@ -247,9 +311,13 @@ Mail.prototype.makeInvisible=function(){
 }
 
 Mail.prototype.deleteFromGroup=function(object){
-	//destroy an object from a group
+	//clear the group
+	if(mailGroup){
+		mailGroup.removeAll(true);
+		console.log("mailgroup undefined");
+	}else{
 
-	//MAKE THE OBJECT INVISIBLE INSTEAD OF DELETING IT.
+	}
 }
 Mail.prototype.killLetter=function(){
 	if(letter){
@@ -263,7 +331,12 @@ Mail.prototype.giveLetter=function(index){
 	mailGroup.children[index].visible=false;
 	mailGroup.children[index].inputEnabled=false;
 }
-
+Mail.prototype.resetBag=function(){
+	for(var i;i<mailGroup.length;i++){
+		mailGroup.children[i].visible=true;
+		mailGroup.children[i].inputEnabled=true;
+	}
+}
 Mail.prototype.update=function(){
 	if(game.input.keyboard.justPressed(Phaser.Keyboard.ESC)){
 		//letter.kill();
