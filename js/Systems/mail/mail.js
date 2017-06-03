@@ -39,7 +39,6 @@ Mail.prototype.makeGrid=function(){
 	}
 }
 Mail.prototype.addToGroup=function(stage){
-	console.log("is this even being used");
 	if(!mailGroup){
 		mailGroup=game.add.group();
 	}
@@ -49,7 +48,6 @@ Mail.prototype.addToGroup=function(stage){
 	fuckYou.anchor.setTo(.5,.5);
 	fuckYou.smoothed=false;
 	//fuckYou.visible=false;
-	console.log(stage+ "is the sdfgdfgdfhdfhdfhdfh stage");
 	fuckYou.events.onInputDown.add(
 		function(){
 			//console.log("clicked");

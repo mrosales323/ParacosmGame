@@ -20,7 +20,7 @@ DayZero.prototype.mailBag=function(){
 }
 
 DayZero.prototype.createAllNPCS=function(){
-	tutorialMayor= new TutorialMayor(game.world.centerX*1,game.world.centerY*1,"Mayor");
+	tutorialMayor= new TutorialMayor(game.world.centerX*0.5,game.world.centerY*1,"Mayor");
 	this.game.physics.arcade.enable(tutorialMayor);
 	tutorialMayor.enableBody=true;
 	tutorialMayor.body.collideWorldBounds=true;
@@ -64,7 +64,6 @@ DayZero.prototype.createAllNPCS=function(){
     mailBox.events.onInputDown.add(clickToTalk, this);
 	game.add.existing(mailBox);
 	mailBox.createEx();
-	console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK SOME THINGS");
 }
 
 DayZero.prototype.createCharacter=function(){
@@ -211,7 +210,7 @@ DayZero.prototype.listener=function(){
 
 DayZero.prototype.update=function(){
 	if(isDialogueUp==false && showtextOnce==false){
-		tutorialDialogueSetUp("Click an NPC to talk to them",null);
+		tutorialDialogueSetUp("Press space while walking into an npc to deliver mail to them.\nPress the M key to view your mail.\nFinish the day by delivering all the mail!",null);
 		showtextOnce=true;
 	} 
 	cursor.x=game.input.x+game.camera.x;

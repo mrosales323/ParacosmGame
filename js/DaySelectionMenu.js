@@ -66,7 +66,6 @@ DaySelectionMenu.prototype.create=function(){
     DayOneButton.inputEnabled=true;
     DayOneButton.events.onInputDown.add(this.startDayOne, this);
   }
-  console.log("ZwwwwsssssaaaaaaaasdadasdasdasdaaaZZ");
     if(DayTwoButtonEnabled==true){
     DayTwoButton = game.add.sprite(game.world.centerX*.5, game.world.centerY*.1, 'BlankButton');
     var DayTwoButtonStyle = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: DayTwoButton.width, align: "center" };
@@ -127,7 +126,7 @@ DaySelectionMenu.prototype.render=function(){
 
 DaySelectionMenu.prototype.startDayOne=function(){
   stage=1;
-  game.state.start("main");
+  game.state.start("DayOne");
 }
 
 DaySelectionMenu.prototype.startDayTwo=function(){

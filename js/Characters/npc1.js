@@ -65,7 +65,32 @@ NPC1.prototype.talk=function(){
     active=true
     console.log("activated");    //console.log(d.text);
 
-    mail.doesKeyMatch(this.name);
+
+    switch(stage){
+        case 1:
+            mail1.doesKeyMatch(this.name);
+        break;
+        case 2:
+             mail2.doesKeyMatch(this.name);
+        break;
+        case 3:
+             mail3.doesKeyMatch(this.name);
+        break;
+        case 4:
+             mail4.doesKeyMatch(this.name);
+        break;
+        case 5:
+             mail5.doesKeyMatch(this.name);
+        break;
+        case 6:
+             mail6.doesKeyMatch(this.name);
+        break;
+        case 7:
+            mail7.doesKeyMatch(this.name);
+        break;
+
+    }
+
 
 }
 var i=0;

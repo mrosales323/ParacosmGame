@@ -53,14 +53,14 @@ var cursor;
 var leaf;
 //true if mail1 is open so the player cannot move
 //false if mail1 is not open so the player can move
-var main=function(game){
+var DayOne=function(game){
 console.log("Playing my awesome game I GUESS:");
 };
 
-main.prototype.preload=function(){
+DayOne.prototype.preload=function(){
 
 }
-main.prototype.mail1Bag=function(){
+DayOne.prototype.mail1Bag=function(){
 	//generate a mail1bag
 	mail1=new mail1(game,'mailBag');
 	console.log("mail1bag");
@@ -68,7 +68,7 @@ main.prototype.mail1Bag=function(){
 	
 }
 
-main.prototype.createAllNPCS=function(){
+DayOne.prototype.createAllNPCS=function(){
 	npc1= new NPC1(game.world.centerX*1.3,game.world.centerY*1.3,"Sandy");
 	this.game.physics.arcade.enable(npc1);
 	npc1.enableBody=true;
@@ -148,7 +148,7 @@ main.prototype.createAllNPCS=function(){
 	console.log("MAKE ALL THE NPCS OR ELSE THINGS ARE GOING TO BREAK SOME THINGS");
 }
 
-main.prototype.createCharacter=function(){
+DayOne.prototype.createCharacter=function(){
 	character= new player(game.world.centerX,game.world.centerY);
 	this.game.physics.arcade.enable(character);
 	character.enableBody=true;
@@ -165,7 +165,7 @@ main.prototype.createCharacter=function(){
     character.smoothed=false;
 }
 
-main.prototype.createTrees=function(){
+DayOne.prototype.createTrees=function(){
 	trees= game.add.group();
 	trees=game.add.physicsGroup();
 	trees.immovable=true;
@@ -213,7 +213,7 @@ main.prototype.createTrees=function(){
 	console.log("OAK AND PINE MAKE NO RESEIN.")
 }
 var _emitter;
-main.prototype.leafs=function(){
+DayOne.prototype.leafs=function(){
 	_emitter=game.add.emitter(game.centerX,game.centerY,600);
 	_emitter.makeParticles('leaf');
 		_emitter.start(false, 14000, 100);
@@ -227,7 +227,7 @@ main.prototype.leafs=function(){
 
 }
 
-main.prototype.loadTiles=function(){
+DayOne.prototype.loadTiles=function(){
 		house=this.game.add.sprite(game.world.centerX,game.world.centerY*.2,"Building");
 		house.scale.setTo(3,3);
 		this.game.physics.arcade.enable(house);
@@ -236,7 +236,7 @@ main.prototype.loadTiles=function(){
 		house.body.immovable=true;
 }
 
-main.prototype.create=function(){
+DayOne.prototype.create=function(){
 	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
@@ -289,12 +289,12 @@ main.prototype.create=function(){
 //this.game.stage.scale.refresh();
 
 
-main.prototype.listener=function(){
+DayOne.prototype.listener=function(){
 	counter++;
 //text.text="You clicked "+ counter + " times!";
 }
 
-main.prototype.update=function(){
+DayOne.prototype.update=function(){
 
 	cursor.x=game.input.x+game.camera.x;
 	cursor.y=game.input.y+game.camera.y;
@@ -332,7 +332,7 @@ main.prototype.update=function(){
 	}
 }
 
-main.prototype.render=function(){
+DayOne.prototype.render=function(){
    // game.debug.bodyInfo(character, 32, 32);
 
    // game.debug.body(character);

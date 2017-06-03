@@ -49,7 +49,7 @@ function create(){
 	game.add.plugin(PhaserInput.Plugin);
 	console.log("Booting up v5");
 	game.state.add("DayZero",DayZero);
-	game.state.add("main",main);
+	game.state.add("DayOne",DayOne);
 	game.state.add("DayTwo",DayTwo);
 	game.state.add("DayThree",DayThree);
 	game.state.add("DayFour",DayFour);

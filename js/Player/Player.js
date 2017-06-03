@@ -72,6 +72,7 @@ player.prototype.update=function(){
    game.physics.arcade.collide(character,npc4);
    game.physics.arcade.collide(character,mailBox);
    game.physics.arcade.collide(character,house);
+   game.physics.arcade.collide(character,tutorialMayor);
    game.physics.arcade.collide(character, trees, this.collisionHandler, null, this);
     //console.log("AHHHH");
 }
