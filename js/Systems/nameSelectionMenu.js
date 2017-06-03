@@ -64,6 +64,6 @@ if(namefield.value.toString()=="") return;
 playerName=namefield.value.toString();
 console.log(playerName);
 stage=0;
-game.state.start("DayZero");
+game.state.start("DayTransition0");
 
 }

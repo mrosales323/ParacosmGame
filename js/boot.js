@@ -36,6 +36,7 @@ function preload(){
 
 	game.load.audio("Town1",["assets/audio/BGM/Town1.m4a","assets/audio/BGM/Town1.mp3","assets/audio/BGM/Town1.wav"]);
 	game.load.audio("village",["assets/audio/BGM/village.mp3","assets/audio/BGM/village.ogg"]);
+	game.load.audio("Pop",["assets/audio/SFX/Pop.wav","assets/audio/SFX/Pop.mp3","assets/audio/SFX/Pop.ogg"]);
 
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;  
 	this.scale.pageAlignHorizontally = true;
@@ -59,6 +60,15 @@ function create(){
 	game.state.add("nameSelectionMenu",nameSelectionMenu);
 	game.state.add("MainMenu",MainMenu);
 	game.state.add("DaySelectionMenu",DaySelectionMenu);
+
+	game.state.add("DayTransition0",DayTransition0);
+	game.state.add("DayTransition1",DayTransition1);
+	game.state.add("DayTransition2",DayTransition2);
+	game.state.add("DayTransition3",DayTransition3);
+	game.state.add("DayTransition4",DayTransition4);
+	game.state.add("DayTransition5",DayTransition5);
+	game.state.add("DayTransition6",DayTransition6);
+	game.state.add("DayTransition7",DayTransition7);
 	//game.state.add("instructions",instructions);
 	//game.state.add("credits",credits);
 	game.state.start("MainMenu");

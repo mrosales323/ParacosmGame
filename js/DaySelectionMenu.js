@@ -126,37 +126,37 @@ DaySelectionMenu.prototype.render=function(){
 
 DaySelectionMenu.prototype.startDayOne=function(){
   stage=1;
-  game.state.start("DayOne");
+  game.state.start("DayTransition1");
 }
 
 DaySelectionMenu.prototype.startDayTwo=function(){
   stage=2;
- game.state.start("DayTwo");
+ game.state.start("DayTransition2");
  // game.state.start("main");
 }
 
 DaySelectionMenu.prototype.startDayThree=function(){
   stage=3;
- game.state.start("DayThree");
+ game.state.start("DayTransition3");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDayFour=function(){
   stage=4;
- game.state.start("DayFour");
+ game.state.start("DayTransition4");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDayFive=function(){
   stage=5;
- game.state.start("DayFive");
+ game.state.start("DayTransition5");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDaySix=function(){
   stage=6;
- game.state.start("DaySix");
+ game.state.start("DayTransition6");
  // game.state.start("main");
 }
 DaySelectionMenu.prototype.startDaySeven=function(){
   stage=7;
- game.state.start("DaySeven");
+ game.state.start("DayTransition7");
  // game.state.start("main");
 }
