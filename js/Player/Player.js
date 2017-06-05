@@ -19,7 +19,7 @@ player.prototype.create=function(){
 
 player.prototype.talk=function(player, npc){
     if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && isDialogueUp==false){
-        if(npc==null || npc.name==null || npc.name==undefined || npc.talk==null) return;
+		if(npc==null || npc.name==null || npc.name==undefined || npc.talk==null) return;
         if(npc.talk()!=null)  npc.talk(); 
     }    
 }
@@ -32,6 +32,11 @@ player.prototype.yell=function(player,npc){
 player.prototype.update=function(){
 //console.log("MEH");
     if(playerLastDirection==null) playerLastDirection="Left";
+	if(isDialogueUp==true) {
+		this.animations.paused = true;
+		if (playerLastDirection=="Left") this.animations.frame = 4;
+		else this.animations.frame = 0;
+	}
 	if(isDialogueUp==true || canPlayerMove==false) return;
 	//console.log("This is running");
 

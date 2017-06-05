@@ -147,7 +147,7 @@ DayZero.prototype.leafs=function(){
 
 DayZero.prototype.loadTiles=function(){
 		house=this.game.add.sprite(game.world.centerX,game.world.centerY*.2,"Building");
-		house.scale.setTo(3,3);
+		//house.scale.setTo(3,3);
 		this.game.physics.arcade.enable(house);
 		house.enableBody=true;
 		house.body.collideWorldBounds=true;
@@ -155,7 +155,12 @@ DayZero.prototype.loadTiles=function(){
 }
 
 DayZero.prototype.create=function(){
-	tileSprite = game.add.tileSprite(0, 0, worldWidth, worldHeight, 'JoshFlower');
+	for (i = 0; i < 40; i++) {
+		for (j = 0; j < 23; j++) {
+			tileSprite = game.add.sprite(i*32, j*32, 'tiles');
+			tileSprite.animations.frame = Math.floor(Math.random()*4);
+		}
+	}
 	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 	//game.world.setBounds(0,0,worldWidth,worldHeight); //make the world larger than the camera viewport
 	showtextOnce=false;

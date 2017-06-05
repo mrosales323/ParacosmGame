@@ -56,7 +56,7 @@ genericNPCStructure.prototype.sentences=[
     [4,
     "This is how dialogue would work for multiple days.",
     "Each line in this array is the different\ndialogue that people say when you talk to them\neach time.",
-    "Each array stands for the dialogue for different days."
+    "Each array stands for the dialogue for different days.",
     "The number at the beginning of the array tells the game\nhow many lines of dialogue exist for this day."
     ],
 

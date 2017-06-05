@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1280, 720, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(1280, 736, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload(){
 
@@ -31,6 +31,7 @@ function preload(){
 	this.game.load.image("EXMark","assets/img/tiles/exclamationMark.png");
 
 	this.game.load.image("JoshFlower","assets/img/tiles/aSmallFlower.png");
+	this.game.load.spritesheet("tiles", "assets/img/tiles/tiles.png", 32, 32, 9);
 
 	this.game.load.image("BlankButton","assets/img/MainMenu/Buttons/PlayButton.png");
 
