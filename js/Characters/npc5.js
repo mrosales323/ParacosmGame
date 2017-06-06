@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc5 is school teacher
 
 var playerName;
 
@@ -9,62 +9,68 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC5 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc5");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC5.prototype = Object.create(Phaser.Sprite.prototype);
+NPC5.prototype.constructor = NPC5;
+NPC5.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC5.prototype.name = "School Teacher";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC5.prototype.sentences = [
 
 	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
+	"Hi " + playerName + "! The kids just got out of class.",
+	"What a bright bunch I have got this year.",
+	"A letter from the committee? Why thank you."
 	],
 	
 	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
+	"A lot of people going t owrk in those mines.",
+	"My father worked in those before he passed."
 	],
 	
 	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
+	"A letter from Jannett? Thanks...",
+	"She says she is having troubles in her home town too."
+	],
+	
+	[4,
+	"There is just too much going on for people to pay attention to.",
+	"Now we are taking actions against our own citizens.",
+	"Students are being forced into separated classes.",
+	"Its not even on the orders of our mayor but at the behest of the school board."
+	],
+	
+	[3,
+	"People keep giving in to the mayor and now there is talk of moving the children of foreigners to an entirely different schooling location.",
+	"What have the people of this town come to?",
+	"Thanks for the letter... apparently this is not a localized trend. I'm scared for the future."
 	],
 	
 	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
+	"I can't believe this is happening.",
+	"I'd leave town but I cant just abandon the children."
 	],
 	
 	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
-	],
-	
-	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
-	
-	[1,
-	"Praise the mayor."],
+	"Praise the mayor."
+	],	
 	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC5.prototype.dialogueCount = 1;
+NPC5.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC5.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +121,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC5.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");

@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc8 is husband and wife
 
 var playerName;
 
@@ -9,62 +9,69 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC8 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc8");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC8.prototype = Object.create(Phaser.Sprite.prototype);
+NPC8.prototype.constructor = NPC8;
+NPC8.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC8.prototype.name = "Husband and Wife";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC8.prototype.sentences = [
 
+	[2,
+	"H: How's the mail business " + playerName + "? Think the new mayor is going to affect your job?",
+	"W: You're making him worry!"
+	],
+	
 	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
+	"H: I heard there is talk of mail screening in the future.",
+	"W: Apparently the mayor is scared of ilicit packages from spies...",
+	"W: I heard it from my friend on the city council."
 	],
 	
 	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
+	"H: We are planning on going to the twon meeting.",
+	"W: We are hoping something can be done to get rid of this new mayor."
+	],
+	
+	[4,
+	"H: Have you noticed the shady people around the post office?",
+	"H: Maybe your boss knows something...",
+	"W: We have thought about leaving town and moving somewhere else.",
+	"W: Anyway, hope to see you at the rally today."
 	],
 	
 	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
+	"H: Seems like there is no where we can go where things are better right now.",
+	"W: At least that last protest maed our voices heard."
 	],
 	
 	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
-	],
-	
-	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
+	"H: We had a lot of friends in the council.",
+	"W: I cant believe they are all gone."
 	],
 	
 	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
+	"H: Praise the mayor.",
+	"W: Praise the mayor."
+	],	
 	
-	[1,
-	"Praise the mayor."],
 	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC8.prototype.dialogueCount = 1;
+NPC8.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC8.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +122,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC8.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");

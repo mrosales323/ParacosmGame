@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc10 is farmer
 
 var playerName;
 
@@ -9,62 +9,64 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC10 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc10");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC10.prototype = Object.create(Phaser.Sprite.prototype);
+NPC10.prototype.constructor = NPC10;
+NPC10.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC10.prototype.name = "Farmer";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC10.prototype.sentences = [
 
+	[1,
+	"Must produce these crops!"
+	],
+	
+	[2,
+	"The mine opening means people will be hungrier.",
+	"Maybe I can get the store to buy my crops at a higher price."
+	],
+	
+	[,
+
+	],
+	
 	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
+	"They took the farm away from me. Said I couldn't be trusted with the town's food supply.",
+	"Now I'm being forced to work in the mines.",
+	"I've lived in this town for most of my life!"
 	],
 	
 	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
+	"The guard have made me register as a foreigner.",
+	"I'm scheduled to begin work in the mine. Its the only place I'm allowed to work."
 	],
 	
 	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
-	],
-	
-	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
+	"They won't let me leave.",
+	"I threatened to leave town and they said I couldn't."
 	],
 	
 	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
-	],
+	"Praise the mayor."
+	],	
 	
-	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
-	
-	[1,
-	"Praise the mayor."],
 	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC10.prototype.dialogueCount = 1;
+NPC10.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC10.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +117,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC10.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");

@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc9 is female doctor
 
 var playerName;
 
@@ -9,62 +9,65 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC9 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc9");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC9.prototype = Object.create(Phaser.Sprite.prototype);
+NPC9.prototype.constructor = NPC9;
+NPC9.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC9.prototype.name = "Doctor";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC9.prototype.sentences = [
 
+	[1,
+	"Hey " + playerName + "! Want a quick check up?"
+	],
+	
+	[2,
+	"The mine has been reopen.",
+	"Hopefully I dont get patients with injuries from the mine."
+	],
+
+	[2,
+	"Have you tasted the water? Hmmm....",
+	"I need to send a letter to my colleagues and get their advice."
+	],	
+	
 	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
+	"The water has a high concentration of metals in it.",
+	"Its only been a few months since the mine opened.",
+	"Not to mention workers from the mines are getting sick a lot recently."
 	],
 	
-	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
-	],
-	
-	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
-	],
-	
-	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
+	[3,
+	"I cant believe this!",
+	"The mayor has informed me that it would be unlawful to tell citizens that the water is undrinkable!",
+	"I shouldn't even be telling you this."
 	],
 	
 	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
+	"Don't drink the water. Its not safe."
 	],
 	
-	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
-	
 	[1,
-	"Praise the mayor."],
+	"Praise the mayor."
+	],	
+	
 	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC9.prototype.dialogueCount = 1;
+NPC9.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC9.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +118,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC9.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");

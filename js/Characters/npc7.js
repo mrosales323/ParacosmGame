@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc7 is chef
 
 var playerName;
 
@@ -9,62 +9,66 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC7 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc7");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC7.prototype = Object.create(Phaser.Sprite.prototype);
+NPC7.prototype.constructor = NPC7;
+NPC7.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC7.prototype.name = "Chef";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC7.prototype.sentences = [
 
+	[1,
+	"Hello " + playerName + ", would you like some food?"
+	],
+	
 	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
+	"I sure hope the materials from the mines don't seep into the river.",
+	"We get a lot of fish from there.",
+	"Ah a new recipe from my mother. She has started this restaurant a long time ago."
 	],
 	
 	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
+	"I'm not sure it is a good idea to keep selling the fish from around here.",
+	"Maybe its just me, but the water tastes a little weird."
+	],
+	
+	[3,
+	"Yeah, I stopped selling fish from around here.",
+	"And now that one of our biggest imorters has been banned, well...",
+	"we will have to resort to other foods."
 	],
 	
 	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
+	"Mail? Oh thanks.",
+	"Looks like another ingredients supplier cant come through."
 	],
 	
 	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
+	"I'm leaving town.",
+	"You should too before its too late."
 	],
 	
 	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
-	],
+	"Praise the mayor."
+	],	
 	
-	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
-	
-	[1,
-	"Praise the mayor."],
 	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC7.prototype.dialogueCount = 1;
+NPC7.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC7.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +119,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC7.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");

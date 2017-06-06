@@ -1,4 +1,4 @@
-//npc2 is school child
+//npc13 is houseless citizen
 
 var playerName;
 
@@ -9,62 +9,37 @@ var temp2;
 var temp3;
 var active = false;
 
-var NPC2 = function(xPos, yPos, npcString){
+var NPC13 = function(xPos, yPos, npcString){
 	Phaser.Sprite.call(this, game, xPos, yPos, npcString, null);
-	console.log("Make npc2");
+	console.log("Make npc13");
 }
 
-NPC2.prototype = Object.create(Phaser.Sprite.prototype);
-NPC2.prototype.constructor = NPC2;
-NPC2.prototype.create = function() {
+NPC13.prototype = Object.create(Phaser.Sprite.prototype);
+NPC13.prototype.constructor = NPC13;
+NPC13.prototype.create = function() {
 	
 }
 
-NPC2.prototype.name = "Schoolchild";
+NPC13.prototype.name = "Houseless Citizen";
 
 //first numeric value represents the number of strings in the dialogue list
 
-NPC2.prototype.sentences = [
+NPC13.prototype.sentences = [
 
-	[3,
-	"Oh hey " + playerName + "....",
-	"Man there is too much to read in school.", 
-	"Is that a letter to me from Jenny?!"
-	],
+	[2,
+	"Oh hi. Kind of you to stop by.",
+	"Could you spare some food."],
 	
 	[2,
-	"My dad said he is going to go work that new mine. Cooler than being a mailman.",
-	"Do you have any more mail from Jenny?"
-	],
-	
-	[2,
-	"Dad is gone a lot. He says the mine is good work though.",
-	"Jenny said her dad works there too now."
-	],
-	
-	[2,
-	"Dad has been sick lately.",
-	"The doctor said working in the mine has been bad on his health."
-	],
-	
-	[1,
-	"Doc says that dad should stay away from the mine for a bit but the mayor insists that the mines can't spare any labor."
-	],
-	
-	[2,
-	"The town hall burned down. My dad saw it happen.",
-	"The mayor says he doesn't have to work in the mines anymore though."],
-	
-	[1,
-	"Praise the mayor."],
-	
+	"I saw the mayor pass by the other day.",
+	"He didnt seem happy to see me."],	
 
 ];
 
-NPC2.prototype.dialogueCount = 1;
-NPC2.prototype.dialogueIndex = 1;
+NPC13.prototype.dialogueCount = 1;
+NPC13.prototype.dialogueIndex = 1;
 
-NPC2.prototype.talk = function(){
+NPC13.prototype.talk = function(){
 	
 	if(dialogueTimmer != -1)
 		return;
@@ -115,7 +90,7 @@ NPC2.prototype.talk = function(){
 
 var i = 0;
 
-NPC2.prototype.update = function() {
+NPC13.prototype.update = function() {
 	/*
 	console.log("MEH");
 	console.log("sdfsdf");
